@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -60,7 +61,7 @@ const Navbar = () => {
         {/* Navegación (Se transforma en panel lateral en móvil) */}
         <nav className={`${styles.navLinks} ${isMenuOpen ? styles.navLinksOpen : ''}`} aria-label="Menú de secciones">
           <a href="#inicio" className={styles.link} onClick={closeMenu}>Inicio</a>
-          <a href="#calentamiento" className={styles.link} onClick={closeMenu}>Calentamiento</a>
+          <Link to="/calentamiento" className={styles.link}>Calentamiento</Link>
           <a href="#planes" className={styles.link} onClick={closeMenu}>Planes</a>
           <a href="#sobre-mi" className={styles.link} onClick={closeMenu}>Sobre Mí</a>
           

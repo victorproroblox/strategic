@@ -1,0 +1,128 @@
+.pageWrapper {
+  min-height: 100vh;
+  background-color: #111827; /* Modo enfoque oscuro */
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+}
+
+/* Botón de regreso minimalista */
+.backButton {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: var(--transition-smooth);
+  z-index: 10;
+}
+
+.backButton:hover {
+  color: var(--primary-yellow);
+  transform: translateX(-5px);
+}
+
+/* Contenedor central */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 2;
+}
+
+/* --- ANIMACIÓN DEL CALENTAMIENTO --- */
+.animationContainer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Anillos expansivos (Ondas cerebrales/Energía) */
+.pulseRing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--primary-yellow);
+  animation: ripple 2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pulseRing:nth-child(2) {
+  animation-delay: 1s; /* Desfase para que haya dos ondas continuas */
+}
+
+/* Icono central estático */
+.iconWrapper {
+  position: relative;
+  z-index: 5;
+  background-color: var(--primary-yellow-dark);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+/* ----------------------------------- */
+
+.title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  max-width: 400px;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.startBtn {
+  background-color: var(--primary-yellow);
+  color: #111827;
+  border: none;
+  padding: 1.2rem 4rem;
+  border-radius: 99px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 10px 25px -5px rgba(234, 179, 8, 0.4);
+}
+
+.startBtn:hover {
+  transform: translateY(-3px) scale(1.05);
+  background-color: #FDE047; /* Amarillo más brillante */
+  box-shadow: 0 15px 30px -5px rgba(234, 179, 8, 0.6);
+}

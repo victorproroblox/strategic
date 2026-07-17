@@ -33,7 +33,6 @@ const Home = () => {
             </p>
 
             <button className={styles.visitBtn}>Comenzar Ahora !</button>
-            <span className={styles.smallLink}>WWW.LINGUAPRO.COM</span>
           </div>
         </section>
 
