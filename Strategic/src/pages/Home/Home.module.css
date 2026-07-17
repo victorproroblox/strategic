@@ -118,3 +118,57 @@
   text-transform: uppercase;
   font-weight: 600;
 }
+
+
+/* ... [Mantén todo tu código CSS actual de Home hasta aquí] ... */
+
+/* Optimización Responsive para Móviles */
+@media (max-width: 768px) {
+  /* 1. Ocultar textos laterales que chocan en móvil */
+  .sideTextLeft, .sideTextRight {
+    display: none;
+  }
+
+  /* 2. Reducir el tamaño y padding del recuadro principal */
+  .framedBox {
+    padding: 2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-width: 3px;
+  }
+
+  /* 3. Ajustar el tamaño de la tipografía para que no se salga de la pantalla */
+  .title {
+    font-size: 2.5rem; 
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .visitBtn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    width: 100%; /* El botón ocupa el ancho disponible, mejor para pulgares */
+    max-width: 300px;
+  }
+
+  /* 4. Reducir elementos geométricos de fondo para no saturar */
+  .shapeSquare {
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: -5%;
+  }
+
+  .shapeCircle {
+    width: 200px;
+    height: 200px;
+    bottom: 5%;
+    right: -10%;
+  }
+
+  .shapeSmallRect {
+    display: none; /* Quitamos este rectángulo en móvil para limpiar el diseño */
+  }
+}

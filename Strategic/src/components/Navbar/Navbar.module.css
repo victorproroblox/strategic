@@ -1,4 +1,3 @@
-/* Modificamos position: absolute por fixed y preparamos la transición */
 .header {
   position: fixed;
   top: 0;
@@ -10,13 +9,12 @@
   background-color: transparent;
 }
 
-/* NUEVA CLASE: Se aplica dinámicamente con JavaScript al hacer scroll */
 .scrolled {
-  background-color: rgba(17, 24, 39, 0.95); /* Fondo oscuro del footer */
-  backdrop-filter: blur(12px); /* Efecto cristal / Glassmorphism */
-  -webkit-backdrop-filter: blur(12px); /* Soporte para Safari */
-  padding: 1rem 0; /* Se hace más delgado para no robar espacio */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Sombra elegante */
+  background-color: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -29,6 +27,14 @@
   justify-content: space-between;
 }
 
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  z-index: 60; /* Para que quede por encima del menú móvil */
+}
+
 .logoText {
   font-family: var(--font-heading);
   font-size: 1.25rem;
@@ -36,7 +42,6 @@
   color: var(--text-main);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  text-decoration: none;
 }
 
 .navLinks {
@@ -56,7 +61,7 @@
 }
 
 .link:hover {
-  color: var(--primary-yellow); /* Al pasar el mouse ahora se pinta de amarillo */
+  color: var(--primary-yellow);
 }
 
 .searchBtn {
@@ -74,9 +79,101 @@
 
 .searchBtn:hover {
   background: var(--bg-white);
-  color: var(--text-dark); /* Texto oscuro para contrastar con el fondo blanco */
+  color: var(--text-dark);
 }
 
-@media (max-width: 768px) {
-  .navLinks { display: none; }
+/* Ocultos por defecto */
+.hamburger { display: none; }
+.mobileBtn { display: none; }
+.overlay { display: none; }
+
+/* =========================================
+   ESTILOS RESPONSIVE (MÓVIL Y TABLET)
+   ========================================= */
+@media (max-width: 900px) {
+  .desktopBtn {
+    display: none;
+  }
+  
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 60;
+    padding: 0.5rem;
+  }
+
+  .hamburgerLine {
+    width: 24px;
+    height: 2px;
+    background-color: var(--bg-white);
+    transition: all 0.3s ease;
+  }
+
+  /* Animación del botón hamburguesa para convertirse en 'X' */
+  .hamburgerOpen .hamburgerLine:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburgerOpen .hamburgerLine:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburgerOpen .hamburgerLine:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Panel lateral del menú móvil */
+  .navLinks {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Oculto fuera de la pantalla */
+    width: 280px;
+    height: 100vh;
+    background-color: #111827; /* Fondo oscuro premium */
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 55;
+    padding: 2rem;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .navLinksOpen {
+    right: 0; /* Desliza hacia adentro */
+  }
+
+  .link {
+    font-size: 1.1rem; /* Textos más grandes para pulsar con el dedo */
+  }
+
+  .mobileBtn {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Fondo oscuro detrás del menú */
+  .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 54;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .overlayOpen {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
