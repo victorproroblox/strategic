@@ -1,0 +1,39 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+:root {
+  /* Nueva Paleta - Inspirada en la referencia */
+  --primary-yellow: #EAB308;      /* Amarillo base vibrante */
+  --primary-yellow-dark: #CA8A04; /* Amarillo oscuro para contrastes y fondos */
+  --accent-light: rgba(255, 255, 255, 0.2); /* Para figuras geométricas translúcidas */
+  
+  --bg-white: #FFFFFF;
+  --text-main: #FFFFFF;           /* El texto principal ahora es blanco sobre el amarillo */
+  --text-dark: #1F2937;           /* Para botones o textos sobre fondo blanco */
+  --text-muted: rgba(255, 255, 255, 0.8);
+
+  /* Tipografía */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Transiciones */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background-color: var(--primary-yellow-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}

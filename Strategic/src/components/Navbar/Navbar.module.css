@@ -1,0 +1,82 @@
+/* Modificamos position: absolute por fixed y preparamos la transición */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 1.5rem 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+}
+
+/* NUEVA CLASE: Se aplica dinámicamente con JavaScript al hacer scroll */
+.scrolled {
+  background-color: rgba(17, 24, 39, 0.95); /* Fondo oscuro del footer */
+  backdrop-filter: blur(12px); /* Efecto cristal / Glassmorphism */
+  -webkit-backdrop-filter: blur(12px); /* Soporte para Safari */
+  padding: 1rem 0; /* Se hace más delgado para no robar espacio */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Sombra elegante */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: var(--transition-smooth);
+}
+
+.link:hover {
+  color: var(--primary-yellow); /* Al pasar el mouse ahora se pinta de amarillo */
+}
+
+.searchBtn {
+  background: transparent;
+  border: 1px solid var(--bg-white);
+  color: var(--text-main);
+  padding: 0.5rem 1.5rem;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.searchBtn:hover {
+  background: var(--bg-white);
+  color: var(--text-dark); /* Texto oscuro para contrastar con el fondo blanco */
+}
+
+@media (max-width: 768px) {
+  .navLinks { display: none; }
+}
