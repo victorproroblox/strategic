@@ -120,3 +120,36 @@
   background-color: var(--primary-yellow-dark);
   color: var(--bg-white);
 }
+
+/* =========================================
+   OPTIMIZACIÓN RESPONSIVE (MÓVIL Y TABLET)
+   ========================================= */
+@media (max-width: 768px) {
+  .slideContainer {
+    padding: 1rem;
+  }
+
+  .doWord {
+    align-self: center; /* En móvil centramos "Do" para dibujar mejor las líneas */
+    margin-left: 0;
+    font-size: 4rem;
+  }
+
+  .pronounsRow {
+    flex-wrap: wrap; /* Permite que las palabras bajen si no caben */
+    justify-content: center;
+    gap: 1.5rem 2rem; /* Separación vertical y horizontal */
+    margin-top: 4rem; /* Reducimos el espacio vertical */
+  }
+
+  .pronounItem {
+    font-size: 2.5rem;
+  }
+
+  .stepBtn {
+    width: 50px;
+    height: 50px;
+    bottom: 5%;
+    right: 5%;
+  }
+}

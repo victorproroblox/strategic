@@ -120,3 +120,46 @@
   background-color: var(--primary-yellow-dark);
   color: var(--bg-white);
 }
+
+/* =========================================
+   OPTIMIZACIÓN RESPONSIVE (MÓVIL Y TABLET)
+   ========================================= */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contentRow {
+    gap: 1.5rem; /* Reducimos drásticamente la separación */
+  }
+
+  .circleBadge {
+    width: 80px;  /* Círculos más pequeños */
+    height: 80px;
+    border-width: 4px;
+  }
+
+  .circleText {
+    font-size: 2.5rem;
+  }
+
+  .littleV {
+    font-size: 1.8rem;
+    bottom: -10px;
+    right: -15px;
+  }
+
+  .translationText {
+    font-size: 1rem; /* Texto de traducción más pequeño */
+    max-width: 140px;
+  }
+
+  /* Hacemos el botón flotante un poco más pequeño para que no estorbe */
+  .stepBtn {
+    width: 50px;
+    height: 50px;
+    bottom: 5%;
+    right: 5%;
+  }
+}

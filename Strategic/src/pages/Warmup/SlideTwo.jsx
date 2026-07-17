@@ -44,30 +44,41 @@ const SlideTwo = () => {
     setIsDoSelected(false);
   };
 
-  // Efecto poderoso: Calcula matemáticamente dónde dibujar las líneas cada vez que hay una conexión
+ // Efecto poderoso: Calcula matemáticamente dónde dibujar las líneas
+  // y se actualiza si el usuario gira la pantalla del celular
   useEffect(() => {
-    if (!containerRef.current || !doRef.current) return;
+    const drawLines = () => {
+      if (!containerRef.current || !doRef.current) return;
 
-    const containerRect = containerRef.current.getBoundingClientRect();
-    const doRect = doRef.current.getBoundingClientRect();
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const doRect = doRef.current.getBoundingClientRect();
 
-    const newLines = connections.map(id => {
-      const targetRect = pronounRefs.current[id].getBoundingClientRect();
-      
-      return {
-        id,
-        // Inicio de la línea (Centro inferior de la palabra "Do")
-        startX: (doRect.left + doRect.width / 2) - containerRect.left,
-        startY: doRect.bottom - containerRect.top,
-        // Fin de la línea (Centro superior de la palabra destino)
-        endX: (targetRect.left + targetRect.width / 2) - containerRect.left,
-        endY: targetRect.top - containerRect.top,
-        // Validación en tiempo real
-        isCorrect: CORRECT_ANSWERS.includes(id)
-      };
-    });
+      const newLines = connections.map(id => {
+        const targetRect = pronounRefs.current[id].getBoundingClientRect();
+        
+        return {
+          id,
+          // Inicio (Centro inferior de "Do")
+          startX: (doRect.left + doRect.width / 2) - containerRect.left,
+          startY: doRect.bottom - containerRect.top,
+          // Fin (Centro superior del pronombre)
+          endX: (targetRect.left + targetRect.width / 2) - containerRect.left,
+          endY: targetRect.top - containerRect.top,
+          isCorrect: CORRECT_ANSWERS.includes(id)
+        };
+      });
 
-    setLinesData(newLines);
+      setLinesData(newLines);
+    };
+
+    // Dibujar inmediatamente
+    drawLines();
+
+    // Redibujar si el tamaño de la ventana cambia (rotar celular)
+    window.addEventListener('resize', drawLines);
+    
+    // Limpiar el evento
+    return () => window.removeEventListener('resize', drawLines);
   }, [connections, step]);
 
   return (
