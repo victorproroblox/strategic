@@ -37,7 +37,7 @@ const Navbar = () => {
             <path d="M18 2L3 10.5V25.5L18 34L33 25.5V10.5L18 2Z" stroke={isScrolled ? "#EAB308" : "#FFFFFF"} strokeWidth="2.5" strokeLinejoin="round" style={{ transition: 'all 0.3s ease' }}/>
             <path d="M18 13V27M18 13C15.5 11 11.5 10.5 8 12V25C11.5 23.5 15.5 24 18 27M18 13C20.5 11 24.5 10.5 28 12V25C24.5 23.5 20.5 24 18 27" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className={styles.logoText}>LinguaPro</span>
+          <span className={styles.logoText}>Strategic</span>
         </a>
 
         {/* Navegación */}
