@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import styles from './Warmup.module.css';
 import SlideOne from './SlideOne'; 
 import SlideTwo from './SlideTwo';
+import SlideThree from './SlideThree';
+import SlideFour from './SlideFour';
 
 const Warmup = () => {
   // Estado que controla si ya empezamos la presentación
@@ -66,13 +68,15 @@ const Warmup = () => {
       {/* Renderizado dinámico de diapositivas según el número */}
       {currentSlide === 1 && <SlideOne />}
       {currentSlide === 2 && <SlideTwo />}
+      {currentSlide === 3 && <SlideThree />}
+      {currentSlide === 4 && <SlideFour />}
       
-      {currentSlide > 2 && (
+      {currentSlide > 4 && (
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h2>Próxima diapositiva en construcción...</h2>
         </div>
       )}
-      
+
     </div>
   );
 };
