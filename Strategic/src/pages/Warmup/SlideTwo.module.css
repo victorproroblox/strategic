@@ -1,0 +1,122 @@
+.slideWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.slideContainer {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  min-height: 400px; /* Espacio para dibujar las líneas */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+/* Lienzo SVG para las líneas */
+.svgCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Para no bloquear los clics en los textos */
+  z-index: 1;
+}
+
+/* Clases de visibilidad controlada */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+}
+
+/* Estilos de la palabra "Do" */
+.doWord {
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 800;
+  color: #000000;
+  cursor: pointer;
+  align-self: flex-start; /* Alineado a la izquierda como en la imagen */
+  margin-left: 2rem;
+  padding: 0.5rem 2rem;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+  user-select: none;
+}
+
+/* Estado de seleccionado (Para saber que está activo para conectar) */
+.doWord.selected {
+  background-color: var(--primary-yellow);
+  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+  transform: scale(1.05);
+}
+
+/* Fila de pronombres */
+.pronounsRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 8rem; /* Espacio vertical para las líneas */
+  position: relative;
+  z-index: 10;
+}
+
+.pronounItem {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 800;
+  color: #000000;
+  cursor: pointer;
+  transition: transform 0.2s;
+  user-select: none;
+}
+
+.pronounItem:hover {
+  transform: translateY(-5px);
+}
+
+.redLetter {
+  color: #DC2626; /* Rojo intenso para la primera letra */
+}
+
+/* Botón interactivo (Clicker) */
+.stepBtn {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  background-color: var(--primary-yellow);
+  color: #000000;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+  transition: var(--transition-smooth);
+  z-index: 20;
+}
+
+.stepBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-yellow-dark);
+  color: var(--bg-white);
+}

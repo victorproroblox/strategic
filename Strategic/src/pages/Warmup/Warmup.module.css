@@ -126,3 +126,44 @@
   background-color: #FDE047; /* Amarillo más brillante */
   box-shadow: 0 15px 30px -5px rgba(234, 179, 8, 0.6);
 }
+
+
+
+/* ... tu código actual ... */
+
+/* Estilos de la cabecera interactiva */
+.presentationHeader {
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.progressText {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.nextBtn {
+  background-color: var(--primary-yellow);
+  color: var(--text-dark);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.nextBtn:hover {
+  background-color: var(--primary-yellow-dark);
+  color: var(--bg-white);
+}
