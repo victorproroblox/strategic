@@ -1,0 +1,144 @@
+import React, { useState, useRef, useEffect } from 'react';
+import styles from './SlideTwentySix.module.css';
+
+const PRONOUNS = [
+  { id: 'I', firstLetter: 'I', rest: '' },
+  { id: 'You', firstLetter: 'Y', rest: 'ou' },
+  { id: 'We', firstLetter: 'W', rest: 'e' },
+  { id: 'They', firstLetter: 'T', rest: 'hey' },
+  { id: 'He', firstLetter: 'H', rest: 'e' },
+  { id: 'She', firstLetter: 'S', rest: 'he' },
+  { id: 'It', firstLetter: 'I', rest: 't' },
+];
+
+// Regla: Was conecta únicamente con I, He, She, It
+const CORRECT_RULES = {
+  Was: ['I', 'He', 'She', 'It']
+};
+
+const SlideTwentySix = () => {
+  const [step, setStep] = useState(1);
+  const [activeRoot, setActiveRoot] = useState(null); // Maneja la selección de "Was"
+  
+  const [connections, setConnections] = useState({}); 
+  const [linesData, setLinesData] = useState([]);
+
+  const containerRef = useRef(null);
+  const rootRef = useRef(null); 
+  const pronounRefs = useRef({});
+
+  const handleNextStep = () => {
+    if (step < 2) setStep(step + 1);
+  };
+
+  const handleSelectRoot = (word) => {
+    if (step === 2) {
+      setActiveRoot(prev => prev === word ? null : word);
+    }
+  };
+
+  const handleConnect = (pronounId) => {
+    if (!activeRoot) return;
+
+    setConnections(prev => ({
+      ...prev,
+      [pronounId]: activeRoot
+    }));
+    setActiveRoot(null); 
+  };
+
+  useEffect(() => {
+    const drawLines = () => {
+      if (!containerRef.current || !rootRef.current) return;
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const rootRect = rootRef.current.getBoundingClientRect();
+      const newLines = [];
+
+      Object.entries(connections).forEach(([pronounId, rootWord]) => {
+        const targetRef = pronounRefs.current[pronounId];
+        if (!targetRef) return;
+        
+        const targetRect = targetRef.getBoundingClientRect();
+        const isCorrect = CORRECT_RULES[rootWord]?.includes(pronounId);
+
+        newLines.push({
+          id: `${pronounId}-${rootWord}`,
+          // Sale del centro inferior de la caja "Was"
+          startX: (rootRect.left + rootRect.width / 2) - containerRect.left,
+          startY: rootRect.bottom - containerRect.top,
+          // Llega al centro superior del pronombre
+          endX: (targetRect.left + targetRect.width / 2) - containerRect.left,
+          endY: targetRect.top - containerRect.top,
+          isCorrect
+        });
+      });
+
+      setLinesData(newLines);
+    };
+
+    drawLines();
+    window.addEventListener('resize', drawLines);
+    return () => window.removeEventListener('resize', drawLines);
+  }, [connections, step]);
+
+  return (
+    <div className={styles.slideWrapper}>
+      <div className={styles.slideContainer} ref={containerRef}>
+        
+        {/* Lienzo SVG para las líneas de conexión */}
+        <svg className={styles.svgCanvas}>
+          {linesData.map(line => (
+            <line
+              key={line.id}
+              x1={line.startX}
+              y1={line.startY}
+              x2={line.endX}
+              y2={line.endY}
+              stroke={line.isCorrect ? '#22C55E' : '#EF4444'}
+              strokeWidth="4"
+              strokeLinecap="round"
+            />
+          ))}
+        </svg>
+
+        {/* PASO 1: Caja Superior (Was) */}
+        <div className={`${styles.topRow} ${step >= 1 ? styles.visible : styles.hidden}`}>
+          <div 
+            ref={rootRef}
+            className={`${styles.wordBox} ${activeRoot === 'Was' ? styles.selected : ''}`}
+            onClick={() => handleSelectRoot('Was')}
+          >
+            Was
+          </div>
+        </div>
+
+        {/* PASO 2: Fila de pronombres */}
+        <div className={`${styles.pronounsRow} ${step >= 2 ? styles.visible : styles.hidden}`}>
+          {PRONOUNS.map((pronoun) => (
+            <div
+              key={pronoun.id}
+              ref={(el) => pronounRefs.current[pronoun.id] = el}
+              className={styles.pronounItem}
+              onClick={() => handleConnect(pronoun.id)}
+            >
+              <span className={styles.redLetter}>{pronoun.firstLetter}</span>
+              <span>{pronoun.rest}</span>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+      {/* Botón Flotante para avanzar al paso 2 */}
+      {step < 2 && (
+        <button className={styles.stepBtn} onClick={handleNextStep}>
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      )}
+    </div>
+  );
+};
+
+export default SlideTwentySix;

@@ -1,0 +1,134 @@
+.slideWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.slideContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1100px; /* Un poco más ancho para las 3 traducciones */
+  padding: 2rem;
+  gap: 1.2rem; /* Separación más pequeña para que quepan las 7 filas */
+}
+
+/* Fila individual */
+.row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Fila con margen extra hacia abajo (para separar They de He) */
+.rowWithMargin {
+  margin-bottom: 1.5rem;
+}
+
+/* Columna de Inglés */
+.englishPart {
+  width: 180px; /* Ancho ajustado */
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #000000;
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Columna de Traducciones */
+.translationPart {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem); /* Texto ligeramente más pequeño */
+  font-weight: 700;
+  color: #000000;
+  flex-wrap: wrap; /* Por si en pantallas medianas no cabe todo */
+}
+
+/* Clases de colores */
+.redLetter { color: #DC2626; }
+.yellowLetter { color: var(--primary-yellow); }
+
+/* Clases de visibilidad controlada */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-15px);
+  transition: all 0.3s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+}
+
+/* Botón Flotante */
+.stepBtn {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background-color: var(--primary-yellow);
+  color: #000000;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+  transition: var(--transition-smooth);
+  z-index: 20;
+}
+
+.stepBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-yellow-dark);
+  color: var(--bg-white);
+}
+
+/* =========================================
+   OPTIMIZACIÓN RESPONSIVE (MÓVIL Y TABLET)
+   ========================================= */
+@media (max-width: 768px) {
+  .slideContainer {
+    gap: 0.5rem;
+  }
+  
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1rem;
+  }
+
+  .row:last-child {
+    border-bottom: none;
+  }
+
+  .englishPart {
+    width: auto;
+    font-size: 2.2rem;
+  }
+
+  .translationPart {
+    gap: 0.8rem;
+    font-size: 1.3rem;
+  }
+
+  .stepBtn {
+    width: 50px;
+    height: 50px;
+  }
+}

@@ -1,0 +1,166 @@
+.slideWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.slideContainer {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  min-height: 600px; /* Un poco más alto para las 3 filas */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  gap: 6rem; /* Separación automática entre filas */
+}
+
+.svgCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+}
+
+/* Filas estructurales */
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.pronounsRow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Palabras Base (Do, Does, Did) */
+.rootWord {
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: 800;
+  color: #000000;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.rootWord.selected {
+  background-color: var(--primary-yellow);
+  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+  transform: scale(1.05);
+}
+
+.yellowLetter {
+  color: var(--primary-yellow);
+}
+
+/* Pronombres */
+.pronounItem {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-weight: 800;
+  color: #000000;
+  cursor: pointer;
+  transition: transform 0.2s;
+  user-select: none;
+}
+
+.pronounItem:hover {
+  transform: translateY(-5px);
+}
+
+.redLetter {
+  color: #DC2626;
+}
+
+/* Botón flotante */
+.stepBtn {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  background-color: var(--primary-yellow);
+  color: #000000;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+  transition: var(--transition-smooth);
+  z-index: 20;
+}
+
+.stepBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-yellow-dark);
+  color: var(--bg-white);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slideContainer {
+    padding: 1rem;
+    gap: 3rem; /* Juntamos un poco las filas en móvil */
+  }
+
+  .topRow { justify-content: space-around; }
+
+  .rootWord {
+    font-size: 3.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .pronounsRow {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 2rem;
+  }
+
+  .pronounItem { font-size: 2.5rem; }
+
+  .stepBtn {
+    width: 50px;
+    height: 50px;
+    bottom: 5%;
+    right: 5%;
+  }
+}

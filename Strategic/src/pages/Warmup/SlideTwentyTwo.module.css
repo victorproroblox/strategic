@@ -1,0 +1,182 @@
+.slideWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.slideContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
+}
+
+/* =========================================
+   Sección Superior (Cajas)
+   ========================================= */
+.topSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-bottom: 5rem;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.areBox {
+  border: 6px solid var(--primary-yellow);
+  border-radius: 12px;
+  padding: 0.5rem 2.5rem;
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+/* Caja grande con doble borde */
+.bigTranslationBox {
+  border: 4px solid #000000;
+  box-shadow: 0 0 0 5px var(--primary-yellow);
+  border-radius: 12px;
+  padding: 1rem 2.5rem;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-left: 0.5rem; /* Ajuste por el shadow */
+}
+
+/* Grid para que las diagonales "/" queden perfectamente alineadas */
+.transLine {
+  display: grid;
+  grid-template-columns: 140px auto;
+  align-items: center;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #000000;
+}
+
+/* =========================================
+   Sección Inferior (Oraciones)
+   ========================================= */
+.sentencesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+  padding-left: 3rem;
+}
+
+.sentenceRow {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.englishPart {
+  display: flex;
+  gap: 1rem;
+  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  font-weight: 800;
+  color: #000000;
+  width: 250px; /* Ancho fijo para alinear las traducciones */
+}
+
+.spanishPart {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #000000;
+}
+
+/* Colores de letras */
+.redLetter { color: #DC2626; }
+.yellowLetter { color: var(--primary-yellow); }
+
+/* =========================================
+   Visibilidad Animada
+   ========================================= */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-15px);
+  transition: all 0.4s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  transition: all 0.4s ease;
+}
+
+/* Botón Flotante */
+.stepBtn {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  background-color: var(--primary-yellow);
+  color: #000000;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+  transition: var(--transition-smooth);
+  z-index: 20;
+}
+
+.stepBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-yellow-dark);
+  color: var(--bg-white);
+}
+
+/* =========================================
+   OPTIMIZACIÓN RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .topSection {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .sentencesSection {
+    padding-left: 0;
+    gap: 2rem;
+  }
+
+  .sentenceRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    border-bottom: 1px solid #E5E7EB;
+    padding-bottom: 1rem;
+  }
+  
+  .sentenceRow:last-child {
+    border-bottom: none;
+  }
+
+  .englishPart { width: auto; }
+
+  .transLine {
+    grid-template-columns: 100px auto;
+  }
+
+  .stepBtn {
+    width: 50px;
+    height: 50px;
+    bottom: 5%;
+    right: 5%;
+  }
+}

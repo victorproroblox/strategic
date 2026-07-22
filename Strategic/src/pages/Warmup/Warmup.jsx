@@ -5,6 +5,32 @@ import SlideOne from './SlideOne';
 import SlideTwo from './SlideTwo';
 import SlideThree from './SlideThree';
 import SlideFour from './SlideFour';
+import SlideFive from './SlideFive';
+import SlideSix from './SlideSix';
+import SlideSeven from './SlideSeven';
+import SlideEight from './SlideEight';
+import SlideNine from './SlideNine';
+import SlideTen from './SlideTen';
+import SlideEleven from './SlideEleven';
+import SlideTwelve from './SlideTwelve';
+import SlideThirteen from './SlideThirteen';
+import SlideFourteen from './SlideFourteen';
+import SlideFifteen from './SlideFifteen';
+import SlideSixteen from './SlideSixteen';
+import SlideSeventeen from './SlideSeventeen';
+import SlideEighteen from './SlideEighteen';
+import SlideNineteen from './SlideNineteen';
+import SlideTwenty from './SlideTwenty';
+import SlideTwentyOne from './SlideTwentyOne';
+import SlideTwentyTwo from './SlideTwentyTwo';
+import SlideTwentyThree from './SlideTwentyThree';
+import SlideTwentyFour from './SlideTwentyFour';
+import SlideTwentyFive from './SlideTwentyFive';
+import SlideTwentySix from './SlideTwentySix';
+import SlideTwentySeven from './SlideTwentySeven';
+import SlideTwentyEight from './SlideTwentyEight';
+import SlideTwentyNine from './SlideTwentyNine';
+import SlideThirty from './SlideThirty';
 
 const Warmup = () => {
   // Estado que controla si ya empezamos la presentación
@@ -70,8 +96,35 @@ const Warmup = () => {
       {currentSlide === 2 && <SlideTwo />}
       {currentSlide === 3 && <SlideThree />}
       {currentSlide === 4 && <SlideFour />}
+      {currentSlide === 5 && <SlideFive />}
+      {currentSlide === 6 && <SlideSix />}
+      {currentSlide === 7 && <SlideSeven />}
+      {currentSlide === 8 && <SlideEight />}
+      {currentSlide === 9 && <SlideNine />}
+      {currentSlide === 10 && <SlideTen />}
+      {currentSlide === 11 && <SlideEleven />}
+      {currentSlide === 12 && <SlideTwelve />}
+      {currentSlide === 13 && <SlideThirteen />}
+      {currentSlide === 14 && <SlideFourteen />}
+      {currentSlide === 15 && <SlideFifteen />}
+      {currentSlide === 16 && <SlideSixteen />}
+      {currentSlide === 17 && <SlideSeventeen />}
+      {currentSlide === 18 && <SlideEighteen />}
+      {currentSlide === 19 && <SlideNineteen />}
+      {currentSlide === 20 && <SlideTwenty />}
+      {currentSlide === 21 && <SlideTwentyOne />}
+      {currentSlide === 22 && <SlideTwentyTwo />}
+      {currentSlide === 23 && <SlideTwentyThree />}
+      {currentSlide === 24 && <SlideTwentyFour />}
+      {currentSlide === 25 && <SlideTwentyFive />}
+      {currentSlide === 26 && <SlideTwentySix />}
+      {currentSlide === 27 && <SlideTwentySeven />}
+      {currentSlide === 28 && <SlideTwentyEight />}
+      {currentSlide === 29 && <SlideTwentyNine />}
+      {currentSlide === 30 && <SlideThirty />}
       
-      {currentSlide > 4 && (
+
+      {currentSlide > 40 && (
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h2>Próxima diapositiva en construcción...</h2>
         </div>

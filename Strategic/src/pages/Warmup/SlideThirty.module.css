@@ -1,0 +1,204 @@
+.slideWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.slideContainer {
+  display: grid;
+  grid-template-columns: 240px auto 240px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem;
+  gap: 1.5rem;
+}
+
+/* =========================================
+   Columnas Laterales (Círculos + Flechas)
+   ========================================= */
+.sideColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 520px;
+}
+
+/* Círculos N y S */
+.circleBadge {
+  width: 90px;
+  height: 90px;
+  border: 5px solid #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+.circleText {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--primary-yellow);
+}
+
+.littleV {
+  position: absolute;
+  bottom: -15px;
+  right: -20px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #000000;
+}
+
+/* Flechas y Textos */
+.arrowContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.arrowIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.arrowIconLeft {
+  transform: rotate(45deg);
+}
+
+.arrowIconRight {
+  transform: rotate(-45deg);
+}
+
+.sideText {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #000000;
+  line-height: 1.2;
+}
+
+/* =========================================
+   Tabla Central
+   ========================================= */
+.tableContainer {
+  border: 2px solid #000000;
+  background-color: #FFFFFF;
+  width: 500px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1.5px solid #000000;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.cell {
+  padding: 0.4rem 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #000000;
+  position: relative;
+}
+
+.cellLeft {
+  border-right: 1.5px solid #000000;
+}
+
+/* Resaltador Amarillo en los verbos */
+.yellowHighlight {
+  background-color: #FDE047; /* Amarillo fluorescente suave */
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+/* Enmarcado Negro Especial */
+.specialBorderLeft {
+  outline: 4px solid #000000;
+  outline-offset: -2px;
+  z-index: 10;
+  background-color: #FFFFFF;
+}
+
+.specialBorderRight {
+  outline: 4px solid #000000;
+  outline-offset: -2px;
+  z-index: 10;
+  background-color: #FFFFFF;
+}
+
+/* =========================================
+   Visibilidad Animada
+   ========================================= */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Botón Flotante */
+.stepBtn {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background-color: var(--primary-yellow);
+  color: #000000;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+  transition: var(--transition-smooth);
+  z-index: 20;
+}
+
+.stepBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-yellow-dark);
+  color: var(--bg-white);
+}
+
+/* =========================================
+   OPTIMIZACIÓN RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+  .slideContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .tableContainer {
+    width: 100%;
+    max-width: 450px;
+  }
+  
+  .sideColumn {
+    height: auto;
+    gap: 1rem;
+  }
+}
