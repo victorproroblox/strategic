@@ -1,0 +1,101 @@
+.slideWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  padding: 2rem;
+}
+
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #FFFFFF;
+  border: 6px solid var(--primary-yellow);
+  border-radius: 28px;
+  padding: 3.5rem 2.5rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(234, 179, 8, 0.2);
+  gap: 1.5rem;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.trophyIcon {
+  width: 90px;
+  height: 90px;
+  color: var(--primary-yellow);
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.mainTitle {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.highlightText {
+  color: var(--primary-yellow-dark);
+  display: block;
+}
+
+.subText {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--warmup-gray);
+  margin: 0;
+}
+
+.checkmarkBadge {
+  background-color: #10B981;
+  color: #FFFFFF;
+  border-radius: 50px;
+  padding: 0.6rem 1.8rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Animations */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .cardContainer {
+    padding: 2rem 1.5rem;
+  }
+  .trophyIcon {
+    width: 70px;
+    height: 70px;
+  }
+}

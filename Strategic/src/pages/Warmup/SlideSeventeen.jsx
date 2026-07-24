@@ -42,18 +42,37 @@ const SlideSeventeen = () => {
   const handleConnect = (pronounId) => {
     if (!activeRoot) return;
 
-    setConnections(prev => {
-      // Ahora validamos con 'DidHad'
-      const isBottom = activeRoot === 'DidHad';
-      return {
-        ...prev,
-        [pronounId]: {
-          ...(prev[pronounId] || {}),
-          [isBottom ? 'bottom' : 'top']: activeRoot
-        }
-      };
-    });
-    setActiveRoot(null); 
+    // Ahora validamos con 'DidHad'
+    const isBottom = activeRoot === 'DidHad';
+    const key = isBottom ? 'bottom' : 'top';
+    const rootWord = activeRoot;
+    const isCorrect = CORRECT_RULES[rootWord].includes(pronounId);
+
+    setConnections(prev => ({
+      ...prev,
+      [pronounId]: {
+        ...(prev[pronounId] || {}),
+        [key]: rootWord
+      }
+    }));
+    setActiveRoot(null);
+
+    if (!isCorrect) {
+      setTimeout(() => {
+        setConnections(prev => {
+          const entry = prev[pronounId];
+          if (!entry || entry[key] !== rootWord) return prev;
+          const restEntry = { ...entry };
+          delete restEntry[key];
+          if (Object.keys(restEntry).length === 0) {
+            const next = { ...prev };
+            delete next[pronounId];
+            return next;
+          }
+          return { ...prev, [pronounId]: restEntry };
+        });
+      }, 800);
+    }
   };
 
   useEffect(() => {
@@ -142,9 +161,10 @@ const SlideSeventeen = () => {
               y1={line.startY}
               x2={line.endX}
               y2={line.endY}
-              stroke={line.isCorrect ? '#22C55E' : '#EF4444'}
+              stroke={line.isCorrect ? '#22C55E' : '#DC2626'}
               strokeWidth="4"
               strokeLinecap="round"
+              className={!line.isCorrect ? styles.lineWrong : ''}
             />
           ))}
         </svg>
@@ -181,8 +201,8 @@ const SlideSeventeen = () => {
 
         {/* PASO 1: Fila Inferior (Did/Had) */}
         <div className={`${styles.bottomRow} ${step >= 1 ? styles.visible : styles.hidden}`}>
-          <div 
-            ref={el => rootRefs.current['DidHad']}
+          <div
+            ref={el => rootRefs.current['DidHad'] = el}
             className={`${styles.rootWord} ${activeRoot === 'DidHad' ? styles.selected : ''}`}
             onClick={() => handleSelectRoot('DidHad')}
             style={{ border: '3px solid var(--primary-yellow)', borderRadius: '12px' }}

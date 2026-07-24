@@ -39,9 +39,18 @@ const SlideTwo = () => {
     if (!isDoSelected) return; // Si "Do" no está seleccionado, no hace nada
     if (connections.includes(pronounId)) return; // Si ya está conectado, lo ignoramos
 
+    const isCorrect = CORRECT_ANSWERS.includes(pronounId);
+
     // Añadimos la conexión y deseleccionamos "Do" para el siguiente turno
-    setConnections([...connections, pronounId]);
+    setConnections(prev => [...prev, pronounId]);
     setIsDoSelected(false);
+
+    // Si la conexión es incorrecta, la línea roja se desvanece y se quita para permitir reintentar
+    if (!isCorrect) {
+      setTimeout(() => {
+        setConnections(prev => prev.filter(id => id !== pronounId));
+      }, 800);
+    }
   };
 
  // Efecto poderoso: Calcula matemáticamente dónde dibujar las líneas
@@ -94,9 +103,10 @@ const SlideTwo = () => {
               y1={line.startY}
               x2={line.endX}
               y2={line.endY}
-              stroke={line.isCorrect ? '#22C55E' : '#EF4444'} /* Verde si es correcto, Rojo si es incorrecto */
+              stroke={line.isCorrect ? '#22C55E' : '#DC2626'} /* Verde si es correcto, Rojo si es incorrecto */
               strokeWidth="4"
               strokeLinecap="round"
+              className={!line.isCorrect ? styles.lineWrong : ''}
             />
           ))}
         </svg>

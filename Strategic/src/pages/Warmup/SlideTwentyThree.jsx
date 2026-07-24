@@ -55,11 +55,26 @@ const SlideTwentyThree = () => {
     // Si el pronombre ya tiene una conexión pre-hecha, no hacemos nada
     if (PREFILLED_CONNECTIONS[pronounId]) return;
 
+    const rootWord = activeRoot;
+    const isCorrect = CORRECT_RULES[rootWord]?.includes(pronounId);
+
     setConnections(prev => ({
       ...prev,
-      [pronounId]: activeRoot
+      [pronounId]: rootWord
     }));
-    setActiveRoot(null); 
+    setActiveRoot(null);
+
+    // Si la conexión es incorrecta, la línea roja se desvanece y se quita para permitir reintentar
+    if (!isCorrect) {
+      setTimeout(() => {
+        setConnections(prev => {
+          if (prev[pronounId] !== rootWord) return prev;
+          const next = { ...prev };
+          delete next[pronounId];
+          return next;
+        });
+      }, 800);
+    }
   };
 
   useEffect(() => {
@@ -120,9 +135,10 @@ const SlideTwentyThree = () => {
               x2={line.endX}
               y2={line.endY}
               // Si es pre-hecha es negra, si es nueva evalúa si es verde (correcta) o roja (incorrecta)
-              stroke={line.isPrefilled ? '#000000' : (line.isCorrect ? '#22C55E' : '#EF4444')}
+              stroke={line.isPrefilled ? '#000000' : (line.isCorrect ? '#22C55E' : '#DC2626')}
               strokeWidth="4"
               strokeLinecap="round"
+              className={!line.isPrefilled && !line.isCorrect ? styles.lineWrong : ''}
             />
           ))}
         </svg>

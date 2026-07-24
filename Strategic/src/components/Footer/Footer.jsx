@@ -1,11 +1,19 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import styles from './Footer.module.css';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer} aria-label="Pie de página corporativo">
+    <motion.footer
+      className={styles.footer}
+      aria-label="Pie de página corporativo"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+    >
       <div className={styles.container}>
         
         {/* Columna Principal: Marca */}
@@ -65,7 +73,7 @@ const Footer = () => {
           <a href="#terminos" className={styles.link} style={{ fontSize: '0.85rem' }}>Términos de Servicio</a>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

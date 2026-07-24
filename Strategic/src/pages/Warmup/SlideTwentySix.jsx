@@ -40,11 +40,26 @@ const SlideTwentySix = () => {
   const handleConnect = (pronounId) => {
     if (!activeRoot) return;
 
+    const rootWord = activeRoot;
+    const isCorrect = CORRECT_RULES[rootWord]?.includes(pronounId);
+
     setConnections(prev => ({
       ...prev,
-      [pronounId]: activeRoot
+      [pronounId]: rootWord
     }));
-    setActiveRoot(null); 
+    setActiveRoot(null);
+
+    // Si la conexión es incorrecta, la línea roja se desvanece y se quita para permitir reintentar
+    if (!isCorrect) {
+      setTimeout(() => {
+        setConnections(prev => {
+          if (prev[pronounId] !== rootWord) return prev;
+          const next = { ...prev };
+          delete next[pronounId];
+          return next;
+        });
+      }, 800);
+    }
   };
 
   useEffect(() => {
@@ -94,9 +109,10 @@ const SlideTwentySix = () => {
               y1={line.startY}
               x2={line.endX}
               y2={line.endY}
-              stroke={line.isCorrect ? '#22C55E' : '#EF4444'}
+              stroke={line.isCorrect ? '#22C55E' : '#DC2626'}
               strokeWidth="4"
               strokeLinecap="round"
+              className={!line.isCorrect ? styles.lineWrong : ''}
             />
           ))}
         </svg>

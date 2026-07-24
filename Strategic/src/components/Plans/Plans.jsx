@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import styles from './Plans.module.css';
 
 // Componente reutilizable para el icono de check (chulita)
@@ -8,18 +9,45 @@ const CheckIcon = () => (
   </svg>
 );
 
+const headerVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } },
+};
+
+const gridVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } },
+};
+
 const Plans = () => {
   return (
     <section className={styles.section} id="planes">
       <div className={styles.container}>
-        <div className={styles.header}>
+        <motion.div
+          className={styles.header}
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.6 }}
+        >
           <h2 className={styles.title}>Planes de Estudio</h2>
           <p style={{ color: '#4B5563' }}>Invierte en tu futuro. Cancela cuando quieras.</p>
-        </div>
+        </motion.div>
 
-        <div className={styles.grid}>
+        <motion.div
+          className={styles.grid}
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {/* Plan Básico */}
-          <div className={styles.card}>
+          <motion.div className={styles.card} variants={cardVariants}>
             <h3 className={styles.planName}>Para Empezar</h3>
             <div className={styles.price}>$19<span>/mes</span></div>
             <ul className={styles.featureList}>
@@ -28,10 +56,10 @@ const Plans = () => {
               <li className={styles.featureItem}><CheckIcon /> Soporte por email</li>
             </ul>
             <button className={styles.btn}>Elegir Básico</button>
-          </div>
+          </motion.div>
 
           {/* Plan Pro (Destacado) */}
-          <div className={`${styles.card} ${styles.cardPopular}`}>
+          <motion.div className={`${styles.card} ${styles.cardPopular}`} variants={cardVariants}>
             <span className={styles.badge}>Más Popular</span>
             <h3 className={styles.planName}>Pro Conversacional</h3>
             <div className={styles.price}>$49<span>/mes</span></div>
@@ -42,8 +70,8 @@ const Plans = () => {
               <li className={styles.featureItem}><CheckIcon /> Acceso a club de conversación</li>
             </ul>
             <button className={`${styles.btn} ${styles.btnPrimary}`}>Empezar Ahora</button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

@@ -43,11 +43,26 @@ const SlideFour = () => {
   const handleConnect = (pronounId) => {
     if (!activeRoot) return; // Obligamos a seleccionar "Do" o "Does" primero
 
+    const rootWord = activeRoot;
+    const isCorrect = CORRECT_RULES[rootWord].includes(pronounId);
+
     setConnections(prev => ({
       ...prev,
-      [pronounId]: activeRoot // Asigna o sobreescribe la conexión
+      [pronounId]: rootWord // Asigna o sobreescribe la conexión
     }));
     setActiveRoot(null); // Deseleccionamos para el siguiente turno
+
+    // Si la conexión es incorrecta, la línea roja se desvanece y se quita para permitir reintentar
+    if (!isCorrect) {
+      setTimeout(() => {
+        setConnections(prev => {
+          if (prev[pronounId] !== rootWord) return prev; // ya se corrigió mientras tanto
+          const next = { ...prev };
+          delete next[pronounId];
+          return next;
+        });
+      }, 800);
+    }
   };
 
   useEffect(() => {
@@ -97,9 +112,10 @@ const SlideFour = () => {
               y1={line.startY}
               x2={line.endX}
               y2={line.endY}
-              stroke={line.isCorrect ? '#22C55E' : '#EF4444'}
+              stroke={line.isCorrect ? '#22C55E' : '#DC2626'}
               strokeWidth="4"
               strokeLinecap="round"
+              className={!line.isCorrect ? styles.lineWrong : ''}
             />
           ))}
         </svg>

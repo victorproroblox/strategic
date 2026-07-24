@@ -42,17 +42,36 @@ const SlideEleven = () => {
   const handleConnect = (pronounId) => {
     if (!activeRoot) return;
 
-    setConnections(prev => {
-      const isBottom = activeRoot === 'Did';
-      return {
-        ...prev,
-        [pronounId]: {
-          ...(prev[pronounId] || {}),
-          [isBottom ? 'bottom' : 'top']: activeRoot
-        }
-      };
-    });
-    setActiveRoot(null); 
+    const isBottom = activeRoot === 'Did';
+    const key = isBottom ? 'bottom' : 'top';
+    const rootWord = activeRoot;
+    const isCorrect = CORRECT_RULES[rootWord].includes(pronounId);
+
+    setConnections(prev => ({
+      ...prev,
+      [pronounId]: {
+        ...(prev[pronounId] || {}),
+        [key]: rootWord
+      }
+    }));
+    setActiveRoot(null);
+
+    if (!isCorrect) {
+      setTimeout(() => {
+        setConnections(prev => {
+          const entry = prev[pronounId];
+          if (!entry || entry[key] !== rootWord) return prev;
+          const restEntry = { ...entry };
+          delete restEntry[key];
+          if (Object.keys(restEntry).length === 0) {
+            const next = { ...prev };
+            delete next[pronounId];
+            return next;
+          }
+          return { ...prev, [pronounId]: restEntry };
+        });
+      }, 800);
+    }
   };
 
   useEffect(() => {
@@ -132,9 +151,10 @@ const SlideEleven = () => {
               y1={line.startY}
               x2={line.endX}
               y2={line.endY}
-              stroke={line.isCorrect ? '#22C55E' : '#EF4444'}
+              stroke={line.isCorrect ? '#22C55E' : '#DC2626'}
               strokeWidth="4"
               strokeLinecap="round"
+              className={!line.isCorrect ? styles.lineWrong : ''}
             />
           ))}
         </svg>

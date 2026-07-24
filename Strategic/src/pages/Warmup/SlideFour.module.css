@@ -29,6 +29,16 @@
   z-index: 1;
 }
 
+/* Línea incorrecta: se mantiene visible un instante y luego se desvanece antes de quitarse */
+@keyframes lineWrongFade {
+  0%, 55% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.lineWrong {
+  animation: lineWrongFade 0.8s ease forwards;
+}
+
 .hidden {
   opacity: 0;
   visibility: hidden;

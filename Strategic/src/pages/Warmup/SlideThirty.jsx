@@ -45,7 +45,7 @@ const SlideThirty = () => {
 
           {/* PASO 7: Flecha + Texto Izquierda */}
           <div className={`${styles.arrowContainer} ${step >= 7 ? styles.visible : styles.hidden}`}>
-            <svg className={`${styles.arrowIcon} ${styles.arrowIconLeft}`} viewBox="0 0 24 24" fill="none" stroke="#A3A3A3" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg className={`${styles.arrowIcon} ${styles.arrowIconLeft}`} viewBox="0 0 24 24" fill="none" stroke="var(--warmup-gray-light)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="19" x2="12" y2="5"></line>
               <polyline points="5 12 12 5 19 12"></polyline>
             </svg>
@@ -102,7 +102,7 @@ const SlideThirty = () => {
 
           {/* PASO 4: Flecha + Texto Derecha */}
           <div className={`${styles.arrowContainer} ${step >= 4 ? styles.visible : styles.hidden}`}>
-            <svg className={`${styles.arrowIcon} ${styles.arrowIconRight}`} viewBox="0 0 24 24" fill="none" stroke="#A3A3A3" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg className={`${styles.arrowIcon} ${styles.arrowIconRight}`} viewBox="0 0 24 24" fill="none" stroke="var(--warmup-gray-light)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <line x1="12" y1="19" x2="12" y2="5"></line>
               <polyline points="5 12 12 5 19 12"></polyline>
             </svg>

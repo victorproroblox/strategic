@@ -31,6 +31,20 @@ import SlideTwentySeven from './SlideTwentySeven';
 import SlideTwentyEight from './SlideTwentyEight';
 import SlideTwentyNine from './SlideTwentyNine';
 import SlideThirty from './SlideThirty';
+import SlideThirtyOne from './SlideThirtyOne';
+import SlideThirtyTwo from './SlideThirtyTwo';
+import SlideThirtyThree from './SlideThirtyThree';
+import SlideThirtyFour from './SlideThirtyFour';
+import SlideThirtyFive from './SlideThirtyFive';
+import SlideThirtySix from './SlideThirtySix';
+import SlideThirtySeven from './SlideThirtySeven';
+import SlideThirtyEight from './SlideThirtyEight';
+import SlideThirtyNine from './SlideThirtyNine';
+import SlideForty from './SlideForty';
+import SlideFortyOne from './SlideFortyOne';
+import SlideFortyTwo from './SlideFortyTwo';
+
+const TOTAL_SLIDES = 42;
 
 const Warmup = () => {
   // Estado que controla si ya empezamos la presentación
@@ -40,7 +54,7 @@ const Warmup = () => {
 
   // Función para avanzar de diapositiva
   const handleNext = () => {
-    setCurrentSlide(prev => prev + 1);
+    if (currentSlide < TOTAL_SLIDES) setCurrentSlide(prev => prev + 1);
   };
 
   // --- VISTA 1: PANTALLA OSCURA DE INTRODUCCIÓN ---
@@ -76,7 +90,7 @@ const Warmup = () => {
 
   // --- VISTA 2: MOTOR DE PRESENTACIÓN BLANCO ---
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FFFFFF' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FFFFFF', color: '#1F2937' }}>
       
       {/* Barra superior de control */}
       <header className={styles.presentationHeader}>
@@ -85,10 +99,12 @@ const Warmup = () => {
         </Link>
         
         <span className={styles.progressText}>Ejercicio {currentSlide}</span>
-        
-        <button className={styles.nextBtn} onClick={handleNext}>
-          Siguiente
-        </button>
+
+        {currentSlide < TOTAL_SLIDES && (
+          <button className={styles.nextBtn} onClick={handleNext}>
+            Siguiente
+          </button>
+        )}
       </header>
 
       {/* Renderizado dinámico de diapositivas según el número */}
@@ -122,13 +138,18 @@ const Warmup = () => {
       {currentSlide === 28 && <SlideTwentyEight />}
       {currentSlide === 29 && <SlideTwentyNine />}
       {currentSlide === 30 && <SlideThirty />}
-      
-
-      {currentSlide > 40 && (
-        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <h2>Próxima diapositiva en construcción...</h2>
-        </div>
-      )}
+      {currentSlide === 31 && <SlideThirtyOne />}
+      {currentSlide === 32 && <SlideThirtyTwo />}
+      {currentSlide === 33 && <SlideThirtyThree />}
+      {currentSlide === 34 && <SlideThirtyFour />}
+      {currentSlide === 35 && <SlideThirtyFive />}
+      {currentSlide === 36 && <SlideThirtySix />}
+      {currentSlide === 37 && <SlideThirtySeven />}
+      {currentSlide === 38 && <SlideThirtyEight />}
+      {currentSlide === 39 && <SlideThirtyNine />}
+      {currentSlide === 40 && <SlideForty />}
+      {currentSlide === 41 && <SlideFortyOne />}
+      {currentSlide === 42 && <SlideFortyTwo />}
 
     </div>
   );

@@ -121,7 +121,7 @@
 
 /* Resaltador Amarillo en los verbos */
 .yellowHighlight {
-  background-color: #FDE047; /* Amarillo fluorescente suave */
+  background-color: var(--primary-yellow-light);
   padding: 0 4px;
   border-radius: 3px;
 }
