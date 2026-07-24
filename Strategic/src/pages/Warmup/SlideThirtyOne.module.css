@@ -165,3 +165,21 @@
     width: 100%;
   }
 }
+
+@media (max-width: 400px) {
+  .slideWrapper {
+    padding: 1rem;
+  }
+
+  .normalVerbsBox {
+    padding: 1rem 1rem;
+  }
+
+  .specialVerbsBox {
+    padding: 1rem 1.2rem;
+  }
+
+  .yellowBorderBox {
+    padding: 1rem 1.2rem;
+  }
+}

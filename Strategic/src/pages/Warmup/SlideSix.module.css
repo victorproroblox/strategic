@@ -174,3 +174,28 @@
     right: 5%;
   }
 }
+
+@media (max-width: 400px) {
+  .slideContainer {
+    gap: 2rem;
+  }
+
+  .topRow,
+  .bottomRow {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .rootWord {
+    font-size: 1.9rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .pronounsRow {
+    gap: 1rem 1.2rem;
+  }
+
+  .pronounItem {
+    font-size: 1.8rem;
+  }
+}

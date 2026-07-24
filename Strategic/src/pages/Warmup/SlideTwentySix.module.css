@@ -162,3 +162,22 @@
     right: 5%;
   }
 }
+
+@media (max-width: 400px) {
+  .slideContainer {
+    gap: 3rem;
+  }
+
+  .wordBox {
+    font-size: 2.2rem;
+    padding: 0.4rem 1.2rem;
+  }
+
+  .pronounsRow {
+    gap: 1rem 1.2rem;
+  }
+
+  .pronounItem {
+    font-size: 1.9rem;
+  }
+}

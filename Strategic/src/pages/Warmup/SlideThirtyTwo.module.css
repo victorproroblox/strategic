@@ -76,3 +76,35 @@
     right: -30px;
   }
 }
+
+@media (max-width: 480px) {
+  .slideWrapper {
+    padding: 1.2rem;
+  }
+
+  .slideContainer {
+    height: 340px;
+  }
+
+  .formulasTitle {
+    font-size: 1.8rem;
+    top: -30px;
+    right: 0;
+  }
+
+  .circleBadge {
+    width: clamp(150px, 55vw, 220px);
+    height: clamp(150px, 55vw, 220px);
+    border-width: 8px;
+  }
+
+  .circleText {
+    font-size: clamp(4.5rem, 24vw, 7rem);
+  }
+
+  .littleV {
+    font-size: clamp(3rem, 14vw, 4.5rem);
+    bottom: -14px;
+    right: -20px;
+  }
+}

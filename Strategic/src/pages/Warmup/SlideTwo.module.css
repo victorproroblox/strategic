@@ -163,3 +163,19 @@
     right: 5%;
   }
 }
+
+@media (max-width: 400px) {
+  .doWord {
+    font-size: 2.8rem;
+    padding: 0.4rem 1.2rem;
+  }
+
+  .pronounsRow {
+    gap: 1.2rem 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pronounItem {
+    font-size: 1.9rem;
+  }
+}

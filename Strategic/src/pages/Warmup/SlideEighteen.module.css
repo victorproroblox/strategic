@@ -142,3 +142,29 @@
     right: 5%;
   }
 }
+
+@media (max-width: 400px) {
+  .slideContainer {
+    gap: 4rem;
+  }
+
+  .beBox {
+    font-size: 2.2rem;
+    padding: 0.4rem 1.4rem;
+    border-width: 3px;
+  }
+
+  .serEstarBox {
+    font-size: 1.8rem;
+    padding: 0.4rem 1.4rem;
+  }
+
+  .pronounsRow {
+    gap: 1rem 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .pronounItem {
+    font-size: 1.9rem;
+  }
+}

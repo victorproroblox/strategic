@@ -196,3 +196,28 @@
     right: 5%;
   }
 }
+
+@media (max-width: 400px) {
+  .topSection {
+    padding-left: 0;
+    gap: 1rem;
+  }
+
+  .wasBox {
+    font-size: 2.2rem;
+    padding: 0.4rem 1.2rem;
+  }
+
+  .transLine {
+    font-size: 1.3rem;
+  }
+
+  .englishPart {
+    font-size: 1.9rem;
+    gap: 0.5rem;
+  }
+
+  .spanishPart {
+    font-size: 1.2rem;
+  }
+}

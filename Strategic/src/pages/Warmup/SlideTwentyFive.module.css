@@ -150,3 +150,28 @@
     right: 5%;
   }
 }
+
+@media (max-width: 400px) {
+  .presentBox {
+    font-size: 2.2rem;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .verbsRow {
+    margin-bottom: 3rem;
+  }
+
+  .verbBox {
+    font-size: 2.2rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .pronounsRow {
+    gap: 1rem 1.2rem;
+  }
+
+  .pronounItem {
+    font-size: 1.9rem;
+  }
+}

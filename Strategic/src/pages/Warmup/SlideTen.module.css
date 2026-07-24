@@ -127,3 +127,18 @@
     right: 5%;
   }
 }
+
+@media (max-width: 400px) {
+  .slideContainer {
+    gap: 2rem;
+  }
+
+  .englishPart {
+    font-size: 2rem;
+  }
+
+  .translationPart {
+    font-size: 1.4rem;
+    gap: 0.7rem;
+  }
+}

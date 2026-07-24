@@ -202,3 +202,43 @@
     gap: 1rem;
   }
 }
+
+@media (max-width: 420px) {
+  .slideContainer {
+    padding: 0.6rem;
+  }
+
+  .circleBadge {
+    width: 60px;
+    height: 60px;
+    border-width: 4px;
+  }
+
+  .circleText {
+    font-size: 2.2rem;
+  }
+
+  .littleV {
+    font-size: 1.5rem;
+    bottom: -8px;
+    right: -12px;
+  }
+
+  .arrowIcon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .sideText {
+    font-size: 0.85rem;
+  }
+
+  .tableContainer {
+    max-width: 100%;
+  }
+
+  .cell {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.5rem;
+  }
+}

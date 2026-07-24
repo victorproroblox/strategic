@@ -223,3 +223,44 @@
     right: 5%;
   }
 }
+
+@media (max-width: 480px) {
+  .slideWrapper {
+    padding: 1.2rem;
+  }
+
+  .topHeader {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .circleBadge {
+    width: 56px;
+    height: 56px;
+    border-width: 4px;
+  }
+
+  .circleText {
+    font-size: 2.2rem;
+  }
+
+  .littleV {
+    font-size: 1.5rem;
+    bottom: -6px;
+    right: -10px;
+  }
+
+  .titleText {
+    font-size: 1.9rem;
+  }
+
+  .exampleText {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    letter-spacing: 0;
+  }
+
+  .bottomFormula {
+    font-size: 1.15rem;
+    gap: 0.6rem;
+  }
+}

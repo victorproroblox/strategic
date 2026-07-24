@@ -141,3 +141,31 @@
     right: 5%;
   }
 }
+
+@media (max-width: 400px) {
+  .amBox {
+    font-size: 2.2rem;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .translationBox {
+    font-size: 1.8rem;
+    padding: 0.4rem 1.2rem;
+    margin-bottom: 2.5rem;
+    margin-left: 0.3rem;
+  }
+
+  .sentenceRow {
+    gap: 0.8rem;
+  }
+
+  .englishText {
+    font-size: 2.2rem;
+    gap: 0.6rem;
+  }
+
+  .spanishText {
+    font-size: 1.8rem;
+  }
+}

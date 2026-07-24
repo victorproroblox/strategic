@@ -132,3 +132,18 @@
     height: 50px;
   }
 }
+
+@media (max-width: 400px) {
+  .englishPart {
+    font-size: 1.7rem;
+  }
+
+  .translationPart {
+    font-size: 1.05rem;
+    gap: 0.5rem;
+  }
+
+  .row {
+    padding-bottom: 0.6rem;
+  }
+}

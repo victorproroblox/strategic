@@ -207,3 +207,35 @@
     height: 24px;
   }
 }
+
+@media (max-width: 400px) {
+  .mainTitle {
+    font-size: 2.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contentRow {
+    gap: 1rem;
+  }
+
+  .circleBadge {
+    width: 64px;
+    height: 64px;
+    border-width: 3px;
+  }
+
+  .circleText {
+    font-size: 2rem;
+  }
+
+  .littleV {
+    font-size: 1.3rem;
+    bottom: -8px;
+    right: -10px;
+  }
+
+  .translationText {
+    font-size: 0.85rem;
+    max-width: 110px;
+  }
+}
