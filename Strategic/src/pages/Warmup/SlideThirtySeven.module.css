@@ -15,12 +15,12 @@
   justify-content: space-between;
   width: 100%;
   max-width: 950px;
-  height: 500px;
+  height: 480px;
   position: relative;
 }
 
 /* =========================================
-   SECCIÓN SUPERIOR (Badge S_v + Negar)
+   SECCIÓN SUPERIOR (Badge S_v + Afirmar)
    ========================================= */
 .topHeader {
   display: flex;
@@ -67,14 +67,12 @@
 }
 
 /* =========================================
-   SECCIÓN CENTRAL (Ejemplos con Can't y Can not)
+   SECCIÓN CENTRAL (Ejemplo "You can")
    ========================================= */
 .middleSection {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  align-items: center;
   width: 100%;
   margin: auto 0;
 }
@@ -93,7 +91,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.2rem;
+  gap: 1.5rem;
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight: 800;
 }
@@ -112,10 +110,6 @@
   line-height: 1.1;
   text-align: left;
   color: var(--warmup-black);
-}
-
-.notText {
-  color: #000000;
 }
 
 .yellowLetter {
@@ -171,12 +165,7 @@
 @media (max-width: 768px) {
   .slideContainer {
     height: auto;
-    gap: 2.5rem;
-  }
-
-  .bottomFormula {
-    flex-wrap: wrap;
-    gap: 0.8rem;
+    gap: 3rem;
   }
 
   .stepBtn {
@@ -224,6 +213,7 @@
 
   .bottomFormula {
     font-size: 1.15rem;
-    gap: 0.6rem;
+    gap: 0.7rem;
+    flex-wrap: wrap;
   }
 }

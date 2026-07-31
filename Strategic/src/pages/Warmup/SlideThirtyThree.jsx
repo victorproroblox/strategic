@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './SlideThirtyThree.module.css';
 
 const SlideThirtyThree = () => {
-  // step 1: Muestra encabezado (Insignia N_v y título "Afirmar")
-  // step 2: Muestra el centro ("You work") y la fórmula abajo ("Subject + Normal Verb")
+  // step 1: Encabezado (Insignia N_v y título "Negar")
+  // step 2: Ejemplo central ("You don't work") y la fórmula abajo
   const [step, setStep] = useState(1);
 
   const handleNextStep = () => {
@@ -20,20 +20,35 @@ const SlideThirtyThree = () => {
             <span className={styles.circleText}>N</span>
             <span className={styles.littleV}>v</span>
           </div>
-          <h1 className={styles.titleText}>Afirmar</h1>
+          <h1 className={styles.titleText}>Negar</h1>
         </div>
 
-        {/* PASO 2: Ejemplo Central ("You work") */}
+        {/* PASO 2: Ejemplo Central ("You don't work") */}
         <div className={`${styles.middleSection} ${step >= 2 ? styles.visible : styles.hidden}`}>
           <div className={styles.exampleText}>
-            You &nbsp;work
+            You &nbsp;don’t &nbsp;work
           </div>
         </div>
 
         {/* PASO 2: Fórmula Inferior */}
         <div className={`${styles.bottomFormula} ${step >= 2 ? styles.visible : styles.hidden}`}>
           <span className={styles.subjectText}>Subject</span>
+          
           <span className={styles.plusSign}>+</span>
+          
+          {/* Bloque Auxiliares Negativos */}
+          <div className={styles.auxiliaryStack}>
+            <div>
+              <span className={styles.yellowLetter}>D</span>on’t / <span className={styles.yellowLetter}>D</span>oesn’t
+            </div>
+            <div>
+              <span className={styles.yellowLetter}>D</span>idn’t
+            </div>
+          </div>
+          
+          <span className={styles.plusSign}>+</span>
+          
+          {/* Bloque Normal Verb */}
           <div className={styles.verbStack}>
             <div>
               <span className={styles.yellowLetter}>N</span>ormal

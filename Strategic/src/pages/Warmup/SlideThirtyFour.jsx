@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './SlideThirtyFour.module.css';
 
 const SlideThirtyFour = () => {
-  // step 1: Encabezado (Insignia N_v y título "Negar")
-  // step 2: Ejemplo central ("You don't work") y la fórmula abajo
+  // step 1: Encabezado (Insignia N_v y título "Preguntar")
+  // step 2: Ejemplo central ("Do You work ?") y la fórmula interrogativa abajo
   const [step, setStep] = useState(1);
 
   const handleNextStep = () => {
@@ -20,31 +20,33 @@ const SlideThirtyFour = () => {
             <span className={styles.circleText}>N</span>
             <span className={styles.littleV}>v</span>
           </div>
-          <h1 className={styles.titleText}>Negar</h1>
+          <h1 className={styles.titleText}>Preguntar</h1>
         </div>
 
-        {/* PASO 2: Ejemplo Central ("You don't work") */}
+        {/* PASO 2: Ejemplo Central ("Do You work ?") */}
         <div className={`${styles.middleSection} ${step >= 2 ? styles.visible : styles.hidden}`}>
           <div className={styles.exampleText}>
-            You &nbsp;don’t &nbsp;work
+            Do &nbsp;You &nbsp;work &nbsp;?
           </div>
         </div>
 
         {/* PASO 2: Fórmula Inferior */}
         <div className={`${styles.bottomFormula} ${step >= 2 ? styles.visible : styles.hidden}`}>
-          <span className={styles.subjectText}>Subject</span>
+          
+          {/* Bloque Auxiliares */}
+          <div className={styles.auxiliaryStack}>
+            <div>
+              <span className={styles.yellowLetter}>D</span>o / <span className={styles.yellowLetter}>D</span>oes
+            </div>
+            <div>
+              <span className={styles.yellowLetter}>D</span>id
+            </div>
+          </div>
           
           <span className={styles.plusSign}>+</span>
           
-          {/* Bloque Auxiliares Negativos */}
-          <div className={styles.auxiliaryStack}>
-            <div>
-              <span className={styles.yellowLetter}>D</span>on’t / <span className={styles.yellowLetter}>D</span>oesn’t
-            </div>
-            <div>
-              <span className={styles.yellowLetter}>D</span>idn’t
-            </div>
-          </div>
+          {/* Sujeto */}
+          <span className={styles.subjectText}>Subject</span>
           
           <span className={styles.plusSign}>+</span>
           
@@ -57,6 +59,7 @@ const SlideThirtyFour = () => {
               <span className={styles.yellowLetter}>V</span>erb
             </div>
           </div>
+
         </div>
 
       </div>

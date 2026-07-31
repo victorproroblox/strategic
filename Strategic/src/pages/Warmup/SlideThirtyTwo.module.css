@@ -10,70 +10,169 @@
 }
 
 .slideContainer {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
-  max-width: 1000px;
-  height: 500px;
+  max-width: 950px;
+  height: 480px;
+  position: relative;
+}
+
+/* =========================================
+   SECCIÓN SUPERIOR (Badge N_v + Afirmar)
+   ========================================= */
+.topHeader {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 2rem;
+  width: 100%;
 }
 
-/* Título superior derecho */
-.formulasTitle {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  font-size: clamp(2.5rem, 4vw, 3.8rem);
-  font-weight: 800;
-  color: #000000;
-  margin: 0;
-}
-
-/* Círculo central grande (N_v) */
 .circleBadge {
-  width: clamp(220px, 30vw, 320px);
-  height: clamp(220px, 30vw, 320px);
-  border: clamp(10px, 1.5vw, 16px) solid #000000;
+  width: 80px;
+  height: 80px;
+  border: 5px solid #000000;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   background-color: #FFFFFF;
+  flex-shrink: 0;
 }
 
-/* Letra N en amarillo */
 .circleText {
-  font-size: clamp(8rem, 15vw, 14rem);
+  font-size: 3.2rem;
   font-weight: 800;
   color: var(--primary-yellow);
   line-height: 1;
 }
 
-/* Letra V fuera del círculo, abajo a la derecha */
 .littleV {
   position: absolute;
-  bottom: -30px;
-  right: -50px;
-  font-size: clamp(6rem, 10vw, 9rem);
+  bottom: -10px;
+  right: -15px;
+  font-size: 2.2rem;
   font-weight: 800;
   color: #000000;
   line-height: 1;
+}
+
+.titleText {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #000000;
+  margin: 0;
+}
+
+/* =========================================
+   SECCIÓN CENTRAL (Ejemplo "You work")
+   ========================================= */
+.middleSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto 0;
+}
+
+.exampleText {
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   SECCIÓN INFERIOR (Fórmula)
+   ========================================= */
+.bottomFormula {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: clamp(1.6rem, 3vw, 2.3rem);
+  font-weight: 800;
+}
+
+.subjectText {
+  color: #DC2626; /* Rojo para Subject */
+}
+
+.plusSign {
+  color: #000000;
+}
+
+.verbStack {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: left;
+  color: var(--warmup-black);
+}
+
+.yellowLetter {
+  color: var(--primary-yellow);
+}
+
+/* =========================================
+   VISIBILIDAD Y ANIMACIONES
+   ========================================= */
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.4s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+}
+
+/* Botón Flotante */
+.stepBtn {
+  position: absolute;
+  bottom: 8%;
+  right: 8%;
+  background-color: var(--primary-yellow);
+  color: #000000;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
+  transition: var(--transition-smooth);
+  z-index: 20;
+}
+
+.stepBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--primary-yellow-dark);
+  color: var(--bg-white);
 }
 
 /* =========================================
    OPTIMIZACIÓN RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
-  .formulasTitle {
-    top: -20px;
-    right: 10px;
+  .slideContainer {
+    height: auto;
+    gap: 3rem;
   }
 
-  .littleV {
-    bottom: -20px;
-    right: -30px;
+  .stepBtn {
+    width: 50px;
+    height: 50px;
+    bottom: 5%;
+    right: 5%;
   }
 }
 
@@ -82,29 +181,39 @@
     padding: 1.2rem;
   }
 
-  .slideContainer {
-    height: 340px;
-  }
-
-  .formulasTitle {
-    font-size: 1.8rem;
-    top: -30px;
-    right: 0;
+  .topHeader {
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .circleBadge {
-    width: clamp(150px, 55vw, 220px);
-    height: clamp(150px, 55vw, 220px);
-    border-width: 8px;
+    width: 56px;
+    height: 56px;
+    border-width: 4px;
   }
 
   .circleText {
-    font-size: clamp(4.5rem, 24vw, 7rem);
+    font-size: 2.2rem;
   }
 
   .littleV {
-    font-size: clamp(3rem, 14vw, 4.5rem);
-    bottom: -14px;
-    right: -20px;
+    font-size: 1.5rem;
+    bottom: -6px;
+    right: -10px;
+  }
+
+  .titleText {
+    font-size: 1.9rem;
+  }
+
+  .exampleText {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    letter-spacing: 0;
+  }
+
+  .bottomFormula {
+    font-size: 1.15rem;
+    gap: 0.7rem;
+    flex-wrap: wrap;
   }
 }

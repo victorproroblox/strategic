@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './SlideThirtyEight.module.css';
 
 const SlideThirtyEight = () => {
-  // step 1: Muestra encabezado (Insignia S_v y título "Afirmar")
-  // step 2: Muestra el centro ("You can") y la fórmula abajo ("Subject + Special Verb")
+  // step 1: Muestra encabezado (Insignia S_v y título "Negar")
+  // step 2: Muestra el centro ("You can’t" y "You can not") y la fórmula abajo
   const [step, setStep] = useState(1);
 
   const handleNextStep = () => {
@@ -20,20 +20,25 @@ const SlideThirtyEight = () => {
             <span className={styles.circleText}>S</span>
             <span className={styles.littleV}>v</span>
           </div>
-          <h1 className={styles.titleText}>Afirmar</h1>
+          <h1 className={styles.titleText}>Negar</h1>
         </div>
 
-        {/* PASO 2: Ejemplo Central ("You can") */}
+        {/* PASO 2: Ejemplos Centrales ("You can’t" y "You can not") */}
         <div className={`${styles.middleSection} ${step >= 2 ? styles.visible : styles.hidden}`}>
           <div className={styles.exampleText}>
-            You &nbsp;can
+            You &nbsp;can’t
+          </div>
+          <div className={styles.exampleText}>
+            You &nbsp;can &nbsp;not
           </div>
         </div>
 
         {/* PASO 2: Fórmula Inferior */}
         <div className={`${styles.bottomFormula} ${step >= 2 ? styles.visible : styles.hidden}`}>
           <span className={styles.subjectText}>Subject</span>
+          
           <span className={styles.plusSign}>+</span>
+          
           <div className={styles.verbStack}>
             <div>
               <span className={styles.yellowLetter}>S</span>pecial
@@ -42,6 +47,10 @@ const SlideThirtyEight = () => {
               <span className={styles.yellowLetter}>V</span>erb
             </div>
           </div>
+
+          <span className={styles.plusSign}>+</span>
+
+          <span className={styles.notText}>Not</span>
         </div>
 
       </div>

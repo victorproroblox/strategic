@@ -15,12 +15,12 @@
   justify-content: space-between;
   width: 100%;
   max-width: 950px;
-  height: 480px;
+  height: 500px;
   position: relative;
 }
 
 /* =========================================
-   SECCIÓN SUPERIOR (Badge N_v + Título)
+   SECCIÓN SUPERIOR (Badge S_v + Título)
    ========================================= */
 .topHeader {
   display: flex;
@@ -67,7 +67,7 @@
 }
 
 /* =========================================
-   SECCIÓN CENTRAL (Ejemplo "Don't You work ?")
+   SECCIÓN CENTRAL (Ejemplo "Can't you ?")
    ========================================= */
 .middleSection {
   display: flex;
@@ -85,8 +85,16 @@
 }
 
 /* =========================================
-   SECCIÓN INFERIOR (Fórmula)
+   SECCIÓN INFERIOR (Fórmula + Caja Alterna)
    ========================================= */
+.bottomArea {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
 .bottomFormula {
   display: flex;
   align-items: center;
@@ -104,14 +112,6 @@
   color: #000000;
 }
 
-.auxiliaryStack {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1.1;
-  text-align: center;
-}
-
 .verbStack {
   display: flex;
   flex-direction: column;
@@ -122,6 +122,33 @@
 
 .yellowLetter {
   color: var(--primary-yellow);
+}
+
+/* Caja Forma Alterna (Inferior Izquierda) */
+.alternateBox {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border: 2px solid var(--warmup-gray-light);
+  padding: 0.8rem 1.2rem;
+  background-color: #FFFFFF;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.alternateLabel {
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-weight: 800;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.alternateExample {
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 800;
+  color: #000000;
 }
 
 /* =========================================
@@ -176,9 +203,17 @@
     gap: 2.5rem;
   }
 
-  .bottomFormula {
-    flex-wrap: wrap;
-    gap: 0.8rem;
+  .bottomArea {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .alternateBox {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    width: 100%;
   }
 
   .stepBtn {

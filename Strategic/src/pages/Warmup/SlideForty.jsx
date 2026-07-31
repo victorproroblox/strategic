@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-// Reutilizamos el CSS de la diapositiva 38
-import styles from './SlideThirtyEight.module.css';
+import styles from './SlideForty.module.css';
 
 const SlideForty = () => {
-  // step 1: Encabezado (Insignia S_v y título "Preguntar")
-  // step 2: Ejemplo central ("Can you ?") y fórmula abajo ("Special Verb + Subject")
+  // step 1: Encabezado (Insignia S_v y título "Preguntar Negativamente")
+  // step 2: Ejemplo principal ("Can’t you ?") y fórmula ("Special Verb + Not + Subject")
+  // step 3: Caja de Forma Alterna ("Can you not ?") abajo a la izquierda
   const [step, setStep] = useState(1);
 
   const handleNextStep = () => {
-    if (step < 2) setStep(step + 1);
+    if (step < 3) setStep(step + 1);
   };
 
   return (
@@ -21,38 +21,55 @@ const SlideForty = () => {
             <span className={styles.circleText}>S</span>
             <span className={styles.littleV}>v</span>
           </div>
-          <h1 className={styles.titleText}>Preguntar</h1>
+          <h1 className={styles.titleText}>Preguntar Negativamente</h1>
         </div>
 
-        {/* PASO 2: Ejemplo Central ("Can you ?") */}
+        {/* PASO 2: Ejemplo Central ("Can’t you ?") */}
         <div className={`${styles.middleSection} ${step >= 2 ? styles.visible : styles.hidden}`}>
           <div className={styles.exampleText}>
-            Can &nbsp;you &nbsp;?
+            Can’t &nbsp;you &nbsp;?
           </div>
         </div>
 
-        {/* PASO 2: Fórmula Inferior */}
-        <div className={`${styles.bottomFormula} ${step >= 2 ? styles.visible : styles.hidden}`}>
-          {/* Bloque Special Verb */}
-          <div className={styles.verbStack}>
-            <div>
-              <span className={styles.yellowLetter}>S</span>pecial
+        {/* ÁREA INFERIOR */}
+        <div className={styles.bottomArea}>
+          
+          {/* PASO 3: Caja Forma Alterna (Abajo Izquierda) */}
+          <div className={`${styles.alternateBox} ${step >= 3 ? styles.visible : styles.hidden}`}>
+            <div className={styles.alternateLabel}>
+              Forma Alterna que<br />también es Correcta
             </div>
-            <div>
-              <span className={styles.yellowLetter}>V</span>erb
+            <div className={styles.alternateExample}>
+              Can you not ?
             </div>
           </div>
 
-          <span className={styles.plusSign}>+</span>
+          {/* PASO 2: Fórmula Inferior */}
+          <div className={`${styles.bottomFormula} ${step >= 2 ? styles.visible : styles.hidden}`}>
+            <div className={styles.verbStack}>
+              <div>
+                <span className={styles.yellowLetter}>S</span>pecial
+              </div>
+              <div>
+                <span className={styles.yellowLetter}>V</span>erb
+              </div>
+            </div>
 
-          {/* Sujeto */}
-          <span className={styles.subjectText}>Subject</span>
+            <span className={styles.plusSign}>+</span>
+
+            <span>Not</span>
+
+            <span className={styles.plusSign}>+</span>
+
+            <span className={styles.subjectText}>Subject</span>
+          </div>
+
         </div>
 
       </div>
 
-      {/* Botón Flotante para revelar el paso 2 */}
-      {step < 2 && (
+      {/* Botón Flotante para revelar pasos 2 y 3 */}
+      {step < 3 && (
         <button 
           className={styles.stepBtn} 
           onClick={handleNextStep}

@@ -1,85 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import confetti from 'canvas-confetti';
 import styles from './SlideFortyOne.module.css';
 
-const SlideFortyOne = () => {
-  // step 1: Encabezado (Insignia S_v y título "Preguntar Negativamente")
-  // step 2: Ejemplo principal ("Can’t you ?") y fórmula ("Special Verb + Not + Subject")
-  // step 3: Caja de Forma Alterna ("Can you not ?") abajo a la izquierda
-  const [step, setStep] = useState(1);
+const CONFETTI_COLORS = ['#EAB308', '#FDE047', '#CA8A04', '#22C55E', '#3B82F6', '#DC2626'];
 
-  const handleNextStep = () => {
-    if (step < 3) setStep(step + 1);
-  };
+// Dispara confeti desde ambas esquinas inferiores, como un cañón de celebración
+const launchConfetti = () => {
+  const base = { colors: CONFETTI_COLORS, startVelocity: 55, ticks: 200 };
+  confetti({ ...base, particleCount: 60, angle: 60, spread: 65, origin: { x: 0, y: 1 } });
+  confetti({ ...base, particleCount: 60, angle: 120, spread: 65, origin: { x: 1, y: 1 } });
+};
+
+const SlideFortyOne = () => {
+  useEffect(() => {
+    launchConfetti(); // ráfaga inicial al llegar a la diapositiva
+
+    const interval = setInterval(launchConfetti, 3000); // y luego cada 3 segundos
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={styles.slideWrapper}>
-      <div className={styles.slideContainer}>
+      <div className={styles.cardContainer}>
         
-        {/* PASO 1: Encabezado Superior */}
-        <div className={`${styles.topHeader} ${step >= 1 ? styles.visible : styles.hidden}`}>
-          <div className={styles.circleBadge}>
-            <span className={styles.circleText}>S</span>
-            <span className={styles.littleV}>v</span>
-          </div>
-          <h1 className={styles.titleText}>Preguntar Negativamente</h1>
-        </div>
+        {/* Icono de Trofeo Animado */}
+        <svg className={styles.trophyIcon} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+          <path d="M4 22h16" />
+          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+        </svg>
 
-        {/* PASO 2: Ejemplo Central ("Can’t you ?") */}
-        <div className={`${styles.middleSection} ${step >= 2 ? styles.visible : styles.hidden}`}>
-          <div className={styles.exampleText}>
-            Can’t &nbsp;you &nbsp;?
-          </div>
-        </div>
+        {/* Mensaje de Felicitaciones */}
+        <h1 className={styles.mainTitle}>
+          ¡Felicidades!
+          <span className={styles.highlightText}>Has terminado el Calentamiento</span>
+        </h1>
 
-        {/* ÁREA INFERIOR */}
-        <div className={styles.bottomArea}>
-          
-          {/* PASO 3: Caja Forma Alterna (Abajo Izquierda) */}
-          <div className={`${styles.alternateBox} ${step >= 3 ? styles.visible : styles.hidden}`}>
-            <div className={styles.alternateLabel}>
-              Forma Alterna que<br />también es Correcta
-            </div>
-            <div className={styles.alternateExample}>
-              Can you not ?
-            </div>
-          </div>
+        <p className={styles.subText}>
+          Has completado todos los conceptos clave de la estructura básica en inglés.
+        </p>
 
-          {/* PASO 2: Fórmula Inferior */}
-          <div className={`${styles.bottomFormula} ${step >= 2 ? styles.visible : styles.hidden}`}>
-            <div className={styles.verbStack}>
-              <div>
-                <span className={styles.yellowLetter}>S</span>pecial
-              </div>
-              <div>
-                <span className={styles.yellowLetter}>V</span>erb
-              </div>
-            </div>
-
-            <span className={styles.plusSign}>+</span>
-
-            <span>Not</span>
-
-            <span className={styles.plusSign}>+</span>
-
-            <span className={styles.subjectText}>Subject</span>
-          </div>
-
+        {/* Badge de completado */}
+        <div className={styles.checkmarkBadge}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Warmup Completado
         </div>
 
       </div>
-
-      {/* Botón Flotante para revelar pasos 2 y 3 */}
-      {step < 3 && (
-        <button 
-          className={styles.stepBtn} 
-          onClick={handleNextStep}
-          aria-label="Siguiente elemento"
-        >
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      )}
     </div>
   );
 };

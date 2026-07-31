@@ -42,9 +42,10 @@ import SlideThirtyEight from './SlideThirtyEight';
 import SlideThirtyNine from './SlideThirtyNine';
 import SlideForty from './SlideForty';
 import SlideFortyOne from './SlideFortyOne';
-import SlideFortyTwo from './SlideFortyTwo';
 
-const TOTAL_SLIDES = 42;
+const TOTAL_SLIDES = 41;
+// Path del ícono de flecha usado por el botón flotante "siguiente paso" en todas las diapositivas
+const STEP_BTN_ARROW_PATH = 'M5 12h14M12 5l7 7-7 7';
 
 const Warmup = () => {
   // Estado que controla si ya empezamos la presentación
@@ -56,6 +57,34 @@ const Warmup = () => {
   const handleNext = () => {
     if (currentSlide < TOTAL_SLIDES) setCurrentSlide(prev => prev + 1);
   };
+
+  // Función para regresar a la diapositiva anterior (o al inicio si estamos en la primera)
+  const handleBack = () => {
+    if (currentSlide === 1) {
+      setHasStarted(false);
+    } else {
+      setCurrentSlide(prev => prev - 1);
+    }
+  };
+
+  // Atajos de teclado: Espacio = avanzar el paso interno de la diapositiva, Enter = siguiente diapositiva
+  React.useEffect(() => {
+    if (!hasStarted) return;
+
+    const handleKeyDown = (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        const stepBtn = document.querySelector(`button svg path[d="${STEP_BTN_ARROW_PATH}"]`)?.closest('button');
+        stepBtn?.click();
+      } else if (e.code === 'Enter') {
+        e.preventDefault();
+        handleNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [hasStarted, currentSlide]);
 
   // --- VISTA 1: PANTALLA OSCURA DE INTRODUCCIÓN ---
   if (!hasStarted) {
@@ -94,10 +123,20 @@ const Warmup = () => {
       
       {/* Barra superior de control */}
       <header className={styles.presentationHeader}>
-        <Link to="/" className={styles.backButton} style={{ position: 'relative', top: 0, left: 0, color: '#111827' }}>
-          Finalizar
-        </Link>
-        
+        {currentSlide === TOTAL_SLIDES ? (
+          <Link to="/" className={styles.backButton} style={{ position: 'relative', top: 0, left: 0, color: '#111827' }}>
+            Finalizar
+          </Link>
+        ) : (
+          <button
+            className={styles.backButton}
+            style={{ position: 'relative', top: 0, left: 0, color: '#111827', background: 'none', border: 'none', padding: 0, font: 'inherit', cursor: 'pointer' }}
+            onClick={handleBack}
+          >
+            Regresar
+          </button>
+        )}
+
         <span className={styles.progressText}>Ejercicio {currentSlide}</span>
 
         {currentSlide < TOTAL_SLIDES && (
@@ -149,7 +188,6 @@ const Warmup = () => {
       {currentSlide === 39 && <SlideThirtyNine />}
       {currentSlide === 40 && <SlideForty />}
       {currentSlide === 41 && <SlideFortyOne />}
-      {currentSlide === 42 && <SlideFortyTwo />}
 
     </div>
   );

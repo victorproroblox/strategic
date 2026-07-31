@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styles from './SlideThirtyFive.module.css';
 
 const SlideThirtyFive = () => {
-  // step 1: Encabezado (Insignia N_v y título "Preguntar")
-  // step 2: Ejemplo central ("Do You work ?") y la fórmula interrogativa abajo
+  // step 1: Encabezado (Insignia N_v y título "Preguntar Negativamente")
+  // step 2: Ejemplo central ("Don’t You work ?") y fórmula interrogativa negativa abajo
   const [step, setStep] = useState(1);
 
   const handleNextStep = () => {
@@ -20,26 +20,26 @@ const SlideThirtyFive = () => {
             <span className={styles.circleText}>N</span>
             <span className={styles.littleV}>v</span>
           </div>
-          <h1 className={styles.titleText}>Preguntar</h1>
+          <h1 className={styles.titleText}>Preguntar Negativamente</h1>
         </div>
 
-        {/* PASO 2: Ejemplo Central ("Do You work ?") */}
+        {/* PASO 2: Ejemplo Central ("Don’t You work ?") */}
         <div className={`${styles.middleSection} ${step >= 2 ? styles.visible : styles.hidden}`}>
           <div className={styles.exampleText}>
-            Do &nbsp;You &nbsp;work &nbsp;?
+            Don’t &nbsp;You &nbsp;work &nbsp;?
           </div>
         </div>
 
         {/* PASO 2: Fórmula Inferior */}
         <div className={`${styles.bottomFormula} ${step >= 2 ? styles.visible : styles.hidden}`}>
           
-          {/* Bloque Auxiliares */}
+          {/* Bloque Auxiliares Negativos */}
           <div className={styles.auxiliaryStack}>
             <div>
-              <span className={styles.yellowLetter}>D</span>o / <span className={styles.yellowLetter}>D</span>oes
+              <span className={styles.yellowLetter}>D</span>on’t / <span className={styles.yellowLetter}>D</span>oesn’t
             </div>
             <div>
-              <span className={styles.yellowLetter}>D</span>id
+              <span className={styles.yellowLetter}>D</span>idn’t
             </div>
           </div>
           

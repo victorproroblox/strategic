@@ -9,258 +9,112 @@
   padding: 2rem;
 }
 
-.slideContainer {
+.cardContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 950px;
-  height: 500px;
-  position: relative;
-}
-
-/* =========================================
-   SECCIÓN SUPERIOR (Badge S_v + Título)
-   ========================================= */
-.topHeader {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-}
-
-.circleBadge {
-  width: 80px;
-  height: 80px;
-  border: 5px solid #000000;
-  border-radius: 50%;
-  display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  text-align: center;
   background-color: #FFFFFF;
-  flex-shrink: 0;
+  border: 6px solid var(--primary-yellow);
+  border-radius: 28px;
+  padding: 3.5rem 2.5rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(234, 179, 8, 0.2);
+  gap: 1.5rem;
+  animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.circleText {
-  font-size: 3.2rem;
-  font-weight: 800;
+.trophyIcon {
+  width: 90px;
+  height: 90px;
   color: var(--primary-yellow);
-  line-height: 1;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  animation: bounce 2s infinite ease-in-out;
 }
 
-.littleV {
-  position: absolute;
-  bottom: -10px;
-  right: -15px;
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #000000;
-  line-height: 1;
-}
-
-.titleText {
-  font-size: clamp(2.8rem, 5vw, 4rem);
+.mainTitle {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
   font-weight: 800;
   color: #000000;
   margin: 0;
-}
-
-/* =========================================
-   SECCIÓN CENTRAL (Ejemplo "Can't you ?")
-   ========================================= */
-.middleSection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin: auto 0;
-}
-
-.exampleText {
-  font-size: clamp(3rem, 6vw, 4.8rem);
-  font-weight: 800;
-  color: #000000;
-  letter-spacing: 2px;
-}
-
-/* =========================================
-   SECCIÓN INFERIOR (Fórmula + Caja Alterna)
-   ========================================= */
-.bottomArea {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  width: 100%;
-  position: relative;
-}
-
-.bottomFormula {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.2rem;
-  font-size: clamp(1.6rem, 3vw, 2.3rem);
-  font-weight: 800;
-}
-
-.subjectText {
-  color: #DC2626; /* Rojo para Subject */
-}
-
-.plusSign {
-  color: #000000;
-}
-
-.verbStack {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-  text-align: left;
-  color: var(--warmup-black);
-}
-
-.yellowLetter {
-  color: var(--primary-yellow);
-}
-
-/* Caja Forma Alterna (Inferior Izquierda) */
-.alternateBox {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  border: 2px solid var(--warmup-gray-light);
-  padding: 0.8rem 1.2rem;
-  background-color: #FFFFFF;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.alternateLabel {
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-  font-weight: 800;
-  color: #000000;
   line-height: 1.2;
 }
 
-.alternateExample {
-  font-size: clamp(1.4rem, 2vw, 1.8rem);
+.highlightText {
+  color: var(--primary-yellow-dark);
+  display: block;
+}
+
+.subText {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700;
+  color: var(--warmup-gray);
+  margin: 0;
+}
+
+.checkmarkBadge {
+  background-color: #10B981;
+  color: #FFFFFF;
+  border-radius: 50px;
+  padding: 0.6rem 1.8rem;
+  font-size: 1.2rem;
   font-weight: 800;
-  color: #000000;
-}
-
-/* =========================================
-   VISIBILIDAD Y ANIMACIONES
-   ========================================= */
-.hidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(15px);
-  transition: all 0.4s ease;
-}
-
-.visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition: all 0.4s ease;
-}
-
-/* Botón Flotante */
-.stepBtn {
-  position: absolute;
-  bottom: 8%;
-  right: 8%;
-  background-color: var(--primary-yellow);
-  color: #000000;
-  border: none;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(234, 179, 8, 0.4);
-  transition: var(--transition-smooth);
-  z-index: 20;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-.stepBtn:hover {
-  transform: scale(1.1);
-  background-color: var(--primary-yellow-dark);
-  color: var(--bg-white);
-}
-
-/* =========================================
-   OPTIMIZACIÓN RESPONSIVE
-   ========================================= */
-@media (max-width: 768px) {
-  .slideContainer {
-    height: auto;
-    gap: 2.5rem;
+/* Animations */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
   }
-
-  .bottomArea {
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .alternateBox {
-    position: relative;
-    left: auto;
-    bottom: auto;
-    width: 100%;
-  }
-
-  .stepBtn {
-    width: 50px;
-    height: 50px;
-    bottom: 5%;
-    right: 5%;
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
 
-@media (max-width: 480px) {
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .cardContainer {
+    padding: 2rem 1.5rem;
+  }
+  .trophyIcon {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 400px) {
   .slideWrapper {
-    padding: 1.2rem;
+    padding: 1rem;
   }
-
-  .topHeader {
+  .cardContainer {
+    padding: 1.6rem 1.2rem;
+    border-width: 4px;
     gap: 1rem;
-    flex-wrap: wrap;
   }
-
-  .circleBadge {
+  .trophyIcon {
     width: 56px;
     height: 56px;
-    border-width: 4px;
   }
-
-  .circleText {
-    font-size: 2.2rem;
-  }
-
-  .littleV {
-    font-size: 1.5rem;
-    bottom: -6px;
-    right: -10px;
-  }
-
-  .titleText {
-    font-size: 1.9rem;
-  }
-
-  .exampleText {
-    font-size: clamp(2rem, 9vw, 2.8rem);
-    letter-spacing: 0;
-  }
-
-  .bottomFormula {
-    font-size: 1.15rem;
-    gap: 0.6rem;
+  .checkmarkBadge {
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
   }
 }

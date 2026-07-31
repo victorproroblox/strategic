@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import styles from './SlideThirtyNine.module.css';
+// Reutilizamos el CSS de la diapositiva 38
+import styles from './SlideThirtySeven.module.css';
 
 const SlideThirtyNine = () => {
-  // step 1: Muestra encabezado (Insignia S_v y título "Negar")
-  // step 2: Muestra el centro ("You can’t" y "You can not") y la fórmula abajo
+  // step 1: Encabezado (Insignia S_v y título "Preguntar")
+  // step 2: Ejemplo central ("Can you ?") y fórmula abajo ("Special Verb + Subject")
   const [step, setStep] = useState(1);
 
   const handleNextStep = () => {
@@ -20,25 +21,19 @@ const SlideThirtyNine = () => {
             <span className={styles.circleText}>S</span>
             <span className={styles.littleV}>v</span>
           </div>
-          <h1 className={styles.titleText}>Negar</h1>
+          <h1 className={styles.titleText}>Preguntar</h1>
         </div>
 
-        {/* PASO 2: Ejemplos Centrales ("You can’t" y "You can not") */}
+        {/* PASO 2: Ejemplo Central ("Can you ?") */}
         <div className={`${styles.middleSection} ${step >= 2 ? styles.visible : styles.hidden}`}>
           <div className={styles.exampleText}>
-            You &nbsp;can’t
-          </div>
-          <div className={styles.exampleText}>
-            You &nbsp;can &nbsp;not
+            Can &nbsp;you &nbsp;?
           </div>
         </div>
 
         {/* PASO 2: Fórmula Inferior */}
         <div className={`${styles.bottomFormula} ${step >= 2 ? styles.visible : styles.hidden}`}>
-          <span className={styles.subjectText}>Subject</span>
-          
-          <span className={styles.plusSign}>+</span>
-          
+          {/* Bloque Special Verb */}
           <div className={styles.verbStack}>
             <div>
               <span className={styles.yellowLetter}>S</span>pecial
@@ -50,7 +45,8 @@ const SlideThirtyNine = () => {
 
           <span className={styles.plusSign}>+</span>
 
-          <span className={styles.notText}>Not</span>
+          {/* Sujeto */}
+          <span className={styles.subjectText}>Subject</span>
         </div>
 
       </div>

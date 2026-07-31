@@ -1,131 +1,111 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './SlideThirty.module.css';
 
-const TABLE_DATA = [
-  { left: ['Be', 'Am', 'Are', 'Is'], right: ['Work'], isBoxLeft: false, isBoxRight: false },
-  { left: ['Do', 'Does', 'Did'], right: ['Eat'], isBoxLeft: true, isBoxRight: false },
-  { left: ['Have', 'Has', 'Had'], right: ['Play'], isBoxLeft: true, isBoxRight: false },
-  { left: ['Can'], right: ['Do', 'Does', 'Did'], isBoxLeft: false, isBoxRight: true },
-  { left: ['Could'], right: ['Have', 'Has', 'Had'], isBoxLeft: false, isBoxRight: true },
-  { left: ['Should'], right: ['Drive'], isBoxLeft: false, isBoxRight: false },
-  { left: ['Must'], right: ['Study'], isBoxLeft: false, isBoxRight: false },
-  { left: ['Would'], right: ['Go'], isBoxLeft: false, isBoxRight: false },
-  { left: ['Will'], right: ['Jump'], isBoxLeft: false, isBoxRight: false },
-  { left: ['May'], right: ['Run'], isBoxLeft: false, isBoxRight: false },
-  { left: ['Might'], right: ['Write'], isBoxLeft: false, isBoxRight: false },
-  { left: ['Shall'], right: ['Live'], isBoxLeft: false, isBoxRight: false },
-];
-
 const SlideThirty = () => {
-  // PASOS:
-  // 1: Círculo S
-  // 2: Círculo N
-  // 3: Columna derecha de la tabla
-  // 4: Flecha y texto derecha
-  // 5: Columna izquierda de la tabla
-  // 6: Recuadros negros enfáticos
-  // 7: Flecha y texto izquierda
-  const [step, setStep] = useState(1);
-
-  const handleNextStep = () => {
-    if (step < 7) setStep(step + 1);
-  };
-
   return (
     <div className={styles.slideWrapper}>
       <div className={styles.slideContainer}>
         
-        {/* ================= COLUMNA IZQUIERDA (S_v) ================= */}
-        <div className={styles.sideColumn}>
-          {/* PASO 1: Círculo S */}
-          <div className={`${styles.circleBadge} ${step >= 1 ? styles.visible : styles.hidden}`}>
-            <span className={styles.circleText}>S</span>
-            <span className={styles.littleV}>v</span>
-          </div>
-
-          {/* PASO 7: Flecha + Texto Izquierda */}
-          <div className={`${styles.arrowContainer} ${step >= 7 ? styles.visible : styles.hidden}`}>
-            <svg className={`${styles.arrowIcon} ${styles.arrowIconLeft}`} viewBox="0 0 24 24" fill="none" stroke="var(--warmup-gray-light)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-            <p className={styles.sideText}>
-              Estos son los UNICOS<br />verbos especiales que<br />existen
-            </p>
-          </div>
-        </div>
-
-        {/* ================= TABLA CENTRAL ================= */}
-        <div className={styles.tableContainer}>
-          {TABLE_DATA.map((row, index) => (
-            <div key={index} className={styles.tableRow}>
-              
-              {/* Celda Izquierda (PASO 5: Contenido | PASO 6: Borde negro especial) */}
-              <div className={`
-                ${styles.cell} ${styles.cellLeft} 
-                ${step >= 5 ? styles.visible : styles.hidden}
-                ${step >= 6 && row.isBoxLeft ? styles.specialBorderLeft : ''}
-              `}>
-                {row.left.map((item, i) => (
-                  <React.Fragment key={i}>
-                    <span className={styles.yellowHighlight}>{item}</span>
-                    {i < row.left.length - 1 && ' / '}
-                  </React.Fragment>
-                ))}
-              </div>
-
-              {/* Celda Derecha (PASO 3: Contenido | PASO 6: Borde negro especial) */}
-              <div className={`
-                ${styles.cell} 
-                ${step >= 3 ? styles.visible : styles.hidden}
-                ${step >= 6 && row.isBoxRight ? styles.specialBorderRight : ''}
-              `}>
-                {row.right.map((item, i) => (
-                  <React.Fragment key={i}>
-                    <span className={styles.yellowHighlight}>{item}</span>
-                    {i < row.right.length - 1 && ' / '}
-                  </React.Fragment>
-                ))}
-              </div>
-
+        {/* ================= SECCIÓN SUPERIOR ================= */}
+        <div className={styles.topSection}>
+          
+          {/* COLUMNA IZQUIERDA: VERBOS NORMALES */}
+          <div className={styles.colLeft}>
+            <h2 className={styles.headingText}>
+              En inglés TODOS los verbos<br />son
+            </h2>
+            
+            <div className={styles.badgeTitle}>
+              <span className={styles.circleBadge}>N</span>
+              <span>ormal</span>
             </div>
-          ))}
+
+            <div className={styles.badgeTitle} style={{ marginTop: '-1rem' }}>
+              <span className={styles.yellowText}>V</span>
+              <span>erbs</span>
+            </div>
+
+            {/* Caja de Lista de Verbos Normales */}
+            <div className={styles.normalVerbsBox}>
+              Play , Eat , Work , Buy , Make , Read ,<br />
+              Go , Jump , Run , Travel , Dance , Try<br />
+              Study , Write , Live , Dance , See ,<br />
+              Talk , Grow , Pay , Hold , Stay , Hear ,<br />
+              Watch , Meet , Visit , Say , Talk<br />
+              <span className={styles.yellowText}>D</span>o / Does / <span className={styles.yellowText}>D</span>id , Have / <span className={styles.yellowText}>H</span>as / <span className={styles.yellowText}>H</span>ad<br />
+              Know , Cook , Find , Want , Teach , Like ,<br />
+              Understand , Help , Forget , Clean , Start , Keep ,<br />
+              Listen , Sing , Walk , Laugh , Throw , Remember ,<br />
+              Bet , Thank , Get , Open , Talk , Catch , Call , Give<br />
+              Enjoy , Promise , Trust , Win , Fix , Shoot
+            </div>
+          </div>
+
+          {/* COLUMNA DERECHA: VERBOS ESPECIALES */}
+          <div className={styles.colRight}>
+            <h2 className={styles.headingText}>
+              Solamente estos<br />verbos se clasifican como
+            </h2>
+
+            <div className={styles.badgeTitle}>
+              <span className={styles.circleBadge}>S</span>
+              <span>pecial</span>
+            </div>
+
+            <div className={styles.badgeTitle} style={{ marginTop: '-1rem', marginLeft: '9rem' }}>
+              <span className={styles.yellowText}>V</span>
+              <span>erbs</span>
+            </div>
+
+            {/* Caja de Lista de Verbos Especiales */}
+            <div className={styles.specialVerbsBox}>
+              <div>Be / Am / Are / Is</div>
+              <div>Was / Were</div>
+              <div><span className={styles.yellowText}>D</span>o / Does / <span className={styles.yellowText}>D</span>id</div>
+              <div><span className={styles.yellowText}>H</span>ave / <span className={styles.yellowText}>H</span>as / <span className={styles.yellowText}>H</span>ad</div>
+              <div>Can</div>
+              <div>Could</div>
+              <div>Should</div>
+              <div>Must</div>
+              <div>May</div>
+              <div>Might</div>
+              <div>Would</div>
+              <div>Will</div>
+              <div>Shall</div>
+            </div>
+          </div>
+
         </div>
 
-        {/* ================= COLUMNA DERECHA (N_v) ================= */}
-        <div className={styles.sideColumn}>
-          {/* PASO 2: Círculo N */}
-          <div className={`${styles.circleBadge} ${step >= 2 ? styles.visible : styles.hidden}`}>
-            <span className={styles.circleText}>N</span>
-            <span className={styles.littleV}>v</span>
+        {/* ================= SECCIÓN INFERIOR ================= */}
+        <div className={styles.bottomSection}>
+          
+          {/* Caja Amarilla Izquierda */}
+          <div className={styles.yellowBorderBox}>
+            <div>Los verbos</div>
+            <div>
+              <span className={styles.yellowText}>R</span>EGULARES e <span className={styles.yellowText}>IR</span>REGULARES
+            </div>
+            <div>
+              son otros 2 tipos de verbos DENTRO<br />
+              de los <span className={styles.yellowText}>V</span>erbos <span className={styles.yellowText}>N</span>ormales
+            </div>
           </div>
 
-          {/* PASO 4: Flecha + Texto Derecha */}
-          <div className={`${styles.arrowContainer} ${step >= 4 ? styles.visible : styles.hidden}`}>
-            <svg className={`${styles.arrowIcon} ${styles.arrowIconRight}`} viewBox="0 0 24 24" fill="none" stroke="var(--warmup-gray-light)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-            <p className={styles.sideText}>
-              Estos y el resto de verbos<br />que existen en ingles son<br />Normales
-            </p>
+          {/* Caja Amarilla Derecha */}
+          <div className={styles.yellowBorderBox}>
+            <div>
+              <span className={styles.yellowText}>D</span>o / <span className={styles.yellowText}>D</span>oes / <span className={styles.yellowText}>D</span>id , <span className={styles.yellowText}>H</span>ave / <span className={styles.yellowText}>H</span>as / <span className={styles.yellowText}>H</span>ad
+            </div>
+            <div>Son los UNICOS 6 verbos que son</div>
+            <div>
+              <span className={styles.yellowText}>N</span>ormales y <span className={styles.yellowText}>E</span>speciales
+            </div>
           </div>
+
         </div>
 
       </div>
-
-      {/* Botón Flotante para avanzar los 7 pasos */}
-      {step < 7 && (
-        <button 
-          className={styles.stepBtn} 
-          onClick={handleNextStep}
-          aria-label="Siguiente elemento"
-        >
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      )}
     </div>
   );
 };

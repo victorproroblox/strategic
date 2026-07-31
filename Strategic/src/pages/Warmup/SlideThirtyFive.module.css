@@ -20,7 +20,7 @@
 }
 
 /* =========================================
-   SECCIÓN SUPERIOR (Badge N_v + Preguntar)
+   SECCIÓN SUPERIOR (Badge N_v + Título)
    ========================================= */
 .topHeader {
   display: flex;
@@ -67,7 +67,7 @@
 }
 
 /* =========================================
-   SECCIÓN CENTRAL (Ejemplo "Do You work ?")
+   SECCIÓN CENTRAL (Ejemplo "Don't You work ?")
    ========================================= */
 .middleSection {
   display: flex;
@@ -85,7 +85,7 @@
 }
 
 /* =========================================
-   SECCIÓN INFERIOR (Fórmula Interrogativa)
+   SECCIÓN INFERIOR (Fórmula)
    ========================================= */
 .bottomFormula {
   display: flex;
