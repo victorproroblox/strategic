@@ -132,6 +132,168 @@ const Car = (props) => (
   </IconBase>
 );
 
+const Dance = (props) => (
+  <IconBase {...props}>
+    <circle cx="14" cy="4.2" r="1.8" />
+    <path d="M14 6.5v5" />
+    <path d="M14 8l-4-2.2" />
+    <path d="M14 8.5l4.5 2.5" />
+    <path d="M14 11.5l-3 6.5" />
+    <path d="M14 11.5l4 5" />
+  </IconBase>
+);
+
+const Swim = (props) => (
+  <IconBase {...props}>
+    <circle cx="16.5" cy="6.5" r="1.7" />
+    <path d="M7 12l3.5-1.3 3 1.8 3-2 2.5 1.3" />
+    <path d="M2 16.5c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0" />
+    <path d="M2 20.2c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0" />
+  </IconBase>
+);
+
+const Briefcase = (props) => (
+  <IconBase {...props}>
+    <rect x="3" y="7.5" width="18" height="11.5" rx="2" />
+    <path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5" />
+    <path d="M3 12.5h18" />
+  </IconBase>
+);
+
+const Armchair = (props) => (
+  <IconBase {...props}>
+    <path d="M5 20v-6a7 7 0 0 1 14 0v6" />
+    <path d="M3 20h18" />
+    <path d="M5 15h14" />
+  </IconBase>
+);
+
+const Jump = (props) => (
+  <IconBase {...props}>
+    <circle cx="12" cy="4.5" r="1.8" />
+    <path d="M12 6.5v3.5" />
+    <path d="M12 10l-3.5 3M12 10l3.5 3" />
+    <path d="M8.5 13l-1 4.5M15.5 13l1 4.5" />
+    <path d="M4 20c1-1 2-1 3 0M17 20c1-1 2-1 3 0" />
+  </IconBase>
+);
+
+const Broom = (props) => (
+  <IconBase {...props}>
+    <path d="M20 4 10 14" />
+    <path d="M10 14l-1.5 6.5" />
+    <path d="M10 14l1 6.5" />
+    <path d="M10 14l-6 2" />
+    <path d="M10 14l-4.5 4" />
+  </IconBase>
+);
+
+const Headphones = (props) => (
+  <IconBase {...props}>
+    <path d="M4 15v-3a8 8 0 0 1 16 0v3" />
+    <rect x="2" y="14" width="4.5" height="6.5" rx="1.6" />
+    <rect x="17.5" y="14" width="4.5" height="6.5" rx="1.6" />
+  </IconBase>
+);
+
+const ShoppingBag = (props) => (
+  <IconBase {...props}>
+    <path d="M6 8h12l-1 12.5H7L6 8Z" />
+    <path d="M9 8V6.5a3 3 0 0 1 6 0V8" />
+  </IconBase>
+);
+
+const HelpingHeart = (props) => (
+  <IconBase {...props}>
+    <path d="M12 20s-7-4.3-7-9.3A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7 3.7C19 15.7 12 20 12 20Z" />
+    <path d="M4.5 15c1 .8 2 .8 3 0M19.5 15c-1 .8-2 .8-3 0" />
+  </IconBase>
+);
+
+const Lightbulb = (props) => (
+  <IconBase {...props}>
+    <path d="M9 18h6" />
+    <path d="M10 21h4" />
+    <path d="M12 3a6 6 0 0 0-3.5 10.9c.5.4.8 1 .8 1.6h5.4c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" />
+  </IconBase>
+);
+
+const ChatBubble = (props) => (
+  <IconBase {...props}>
+    <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 8.4 8.4 0 0 1-3.9-.9L3 20l1-4.6A8.5 8.5 0 1 1 21 11.5Z" />
+  </IconBase>
+);
+
+const Palette = (props) => (
+  <IconBase {...props}>
+    <path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H13a1.5 1.5 0 0 1 0-3h2a3 3 0 0 0 3-3 6 6 0 0 0-6-7Z" />
+    <circle cx="7.5" cy="10.5" r="1" />
+    <circle cx="9.5" cy="7" r="1" />
+    <circle cx="14.5" cy="7" r="1" />
+  </IconBase>
+);
+
+const Bike = (props) => (
+  <IconBase {...props}>
+    <circle cx="5.5" cy="17.5" r="3.5" />
+    <circle cx="18.5" cy="17.5" r="3.5" />
+    <path d="M5.5 17.5 10 8h4l3 4.5" />
+    <path d="M10 8l3 5h5.5" />
+  </IconBase>
+);
+
+const Fish = (props) => (
+  <IconBase {...props}>
+    <path d="M3 12s4-5 10-5 8 5 8 5-2 5-8 5-10-5-10-5Z" />
+    <path d="M17 12h4l-2-2" />
+    <path d="M19 12l-2 2" />
+    <circle cx="8" cy="11" r="0.7" fill="currentColor" stroke="none" />
+  </IconBase>
+);
+
+const Hammer = (props) => (
+  <IconBase {...props}>
+    <path d="M14.5 3.5 21 10l-2 2-6.5-6.5Z" />
+    <path d="M13 5.5 3 15.5l3 3L16 8.5" />
+  </IconBase>
+);
+
+const Compass = (props) => (
+  <IconBase {...props}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M15 9l-2 6-4 2 2-6Z" />
+  </IconBase>
+);
+
+const Moon = (props) => (
+  <IconBase {...props}>
+    <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" />
+    <path d="M17 3l.6 1.4L19 5l-1.4.6L17 7l-.6-1.4L15 5l1.4-.6Z" />
+  </IconBase>
+);
+
+const Hug = (props) => (
+  <IconBase {...props}>
+    <circle cx="12" cy="5" r="2" />
+    <path d="M6 20c0-4 2.5-7 6-7s6 3 6 7" />
+    <path d="M4 12c1-2 3-3 4-2M20 12c-1-2-3-3-4-2" />
+  </IconBase>
+);
+
+const Laugh = (props) => (
+  <IconBase {...props}>
+    <circle cx="12" cy="12" r="10" />
+    <path d="M7 13c1 2.5 3 4 5 4s4-1.5 5-4" />
+    <path d="M8 9.5l1.3.8M16 9.5l-1.3.8" />
+  </IconBase>
+);
+
+const Bird = (props) => (
+  <IconBase {...props}>
+    <path d="M2 16c4-6 8-7 10-7s6 1 10 7c-4-3-7-3-10-1-3-2-6-2-10 1Z" />
+  </IconBase>
+);
+
 export const ICONS = {
   utensils: Utensils,
   gamepad: Gamepad,
@@ -147,6 +309,26 @@ export const ICONS = {
   phone: Phone,
   smile: Smile,
   car: Car,
+  dance: Dance,
+  swim: Swim,
+  briefcase: Briefcase,
+  armchair: Armchair,
+  jump: Jump,
+  broom: Broom,
+  headphones: Headphones,
+  shoppingBag: ShoppingBag,
+  heart: HelpingHeart,
+  lightbulb: Lightbulb,
+  chat: ChatBubble,
+  palette: Palette,
+  bike: Bike,
+  fish: Fish,
+  hammer: Hammer,
+  compass: Compass,
+  moon: Moon,
+  hug: Hug,
+  laugh: Laugh,
+  bird: Bird,
 };
 
 // Ícono de dos flechas circulares, para el botón "Alternar"
