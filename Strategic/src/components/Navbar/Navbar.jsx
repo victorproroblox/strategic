@@ -61,7 +61,8 @@ const Navbar = () => {
         {/* Navegación (Se transforma en panel lateral en móvil) */}
         <nav className={`${styles.navLinks} ${isMenuOpen ? styles.navLinksOpen : ''}`} aria-label="Menú de secciones">
           <a href="#inicio" className={styles.link} onClick={closeMenu}>Inicio</a>
-          <Link to="/calentamiento" className={styles.link}>Calentamiento</Link>
+          <Link to="/calentamiento" className={styles.link} onClick={closeMenu}>Calentamiento</Link>
+          <Link to="/juegos" className={styles.link} onClick={closeMenu}>Juegos</Link>
           <a href="#planes" className={styles.link} onClick={closeMenu}>Planes</a>
           <a href="#sobre-mi" className={styles.link} onClick={closeMenu}>Sobre Mí</a>
           

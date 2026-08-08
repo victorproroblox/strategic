@@ -1,0 +1,142 @@
+.stage {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+}
+
+.sentenceBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.langLabel {
+  color: var(--primary-yellow-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+}
+
+.sentence {
+  margin: 0;
+  text-align: center;
+  color: #000000;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  line-height: 1.35;
+}
+
+.divider {
+  width: 60%;
+  max-width: 320px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #E5E7EB 20%, #E5E7EB 80%, transparent);
+}
+
+/* ================= Pieza intercambiable ================= */
+
+.piece {
+  display: inline-flex;
+  vertical-align: middle;
+  overflow: hidden; /* recorta la animación: nunca se ve una opción vecina */
+  margin: 0.15em 0.3em;
+}
+
+.pieceInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  white-space: nowrap;
+  padding: 0.15em 0.7em;
+  border-width: 3px;
+  border-style: solid;
+}
+
+/* Español: ficha rectangular, borde negro */
+.pieceEs .pieceInner {
+  border-color: #000000;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+/* English: ficha tipo píldora, borde amarillo — se distingue por forma Y color */
+.pieceEn .pieceInner {
+  border-color: var(--primary-yellow);
+  border-radius: 999px;
+  background-color: #FFFBEB;
+  color: #000000;
+}
+
+.pieceIcon {
+  width: 0.8em;
+  height: 0.8em;
+  flex-shrink: 0;
+  color: var(--primary-yellow-dark);
+}
+
+/* ================= Botón de acción ================= */
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.alternarBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: var(--primary-yellow);
+  color: #111827;
+  border: none;
+  padding: 1rem 2.2rem;
+  border-radius: 99px;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: 0 10px 20px -6px rgba(234, 179, 8, 0.5);
+}
+
+.alternarBtn:hover {
+  background-color: var(--primary-yellow-dark);
+  transform: translateY(-2px);
+}
+
+.alternarBtn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.alternarIcon {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 480px) {
+  .stage {
+    padding: 1.2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .pieceInner {
+    padding: 0.12em 0.55em;
+    border-width: 2.5px;
+  }
+
+  .alternarBtn {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.9rem;
+  }
+}
