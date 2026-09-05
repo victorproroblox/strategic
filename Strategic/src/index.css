@@ -27,6 +27,10 @@
   --warmup-border-light: #E5E7EB; /* Divisores en móvil */
   --warmup-correct: #22C55E;      /* Verde: conexión correcta */
   --warmup-incorrect: #DC2626;    /* Rojo: conexión incorrecta / acento de pronombre */
+
+  /* --- Acento azul (ej. botón "Revelar" en Juegos) --- */
+  --accent-blue: #2563EB;
+  --accent-blue-dark: #1D4ED8;
 }
 
 * {

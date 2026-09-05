@@ -2,21 +2,36 @@
 // (tarjeta del hub y encabezado dentro del juego), un solo lugar si cambian.
 export const GAME_TITLE = 'Frase de Lego';
 export const GAME_DESCRIPTION =
-  'Cambia una sola pieza de la frase y practica decirla en voz alta, en español y en inglés.';
+  'Cambia el sujeto y el verbo de la frase y practica decirla en voz alta, en inglés y en español.';
 
-// Config del motor genérico de "frase con pieza intercambiable".
-// El componente PhraseSwapGame no sabe nada de verbos: solo lee esta forma de dato.
+// Config del motor genérico de "frase con piezas intercambiables".
+// El componente PhraseSwapGame no sabe nada de verbos ni de pronombres: solo lee esta forma de dato.
+//
+// Los campos "conjEs"/"conjEn" de cada sujeto son la conjugación de "querer"/"want"
+// que le corresponde a ESE sujeto. La plantilla los usa como texto plano
+// ("{sujeto.conjEs}"), así la concordancia sujeto-verbo siempre es correcta
+// sin necesidad de reglas de gramática en el motor: viene ya resuelta en el dato.
 export const legoPhraseConfig = {
-  id: 'verbos-i-want-to',
+  id: 'sujeto-verbo-i-want-to',
   tema: 'Verbos',
   plantilla: {
-    es: 'Yo quiero {verbo}',
-    en: 'I want to {verbo}',
+    es: '{sujeto} {sujeto.conjEs} {verbo}',
+    en: '{sujeto} {sujeto.conjEn} to {verbo}',
   },
   slots: [
+    { id: 'sujeto', banco: 'sujetos', activo: true },
     { id: 'verbo', banco: 'verbos-infinitivo', activo: true },
   ],
   bancos: {
+    sujetos: [
+      { es: 'Yo', en: 'I', conjEs: 'quiero', conjEn: 'want' },
+      { es: 'Tú', en: 'You', conjEs: 'quieres', conjEn: 'want' },
+      { es: 'Él', en: 'He', conjEs: 'quiere', conjEn: 'wants' },
+      { es: 'Ella', en: 'She', conjEs: 'quiere', conjEn: 'wants' },
+      { es: 'Nosotros', en: 'We', conjEs: 'queremos', conjEn: 'want' },
+      { es: 'Ellos', en: 'They', conjEs: 'quieren', conjEn: 'want' },
+      { es: 'Ellas', en: 'They', conjEs: 'quieren', conjEn: 'want' },
+    ],
     'verbos-infinitivo': [
       { es: 'comer', en: 'eat', icono: 'utensils' },
       { es: 'jugar', en: 'play', icono: 'gamepad' },

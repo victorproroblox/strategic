@@ -346,3 +346,6 @@ export const ChevronLeftIcon = (props) => (
     <path d="M15 18l-6-6 6-6" />
   </IconBase>
 );
+
+// Reutiliza el mismo dibujo del ícono "ver" del banco de verbos, para el botón "Revelar"
+export const EyeIcon = Eye;
