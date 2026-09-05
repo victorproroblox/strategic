@@ -1,0 +1,14 @@
+/* Fondo de piezas de Lego para TODA el área de juego (no un marco):
+   la misma textura SVG en mosaico, ahora cubriendo el content completo
+   del GamePageLayout de borde a borde. */
+.legoBackground {
+  background-image: url('../../../assets/games/lego-pattern.svg');
+  background-repeat: repeat;
+  background-size: 160px 160px;
+}
+
+@media (max-width: 480px) {
+  .legoBackground {
+    background-size: 110px 110px;
+  }
+}

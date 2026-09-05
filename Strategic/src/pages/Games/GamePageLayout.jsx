@@ -5,7 +5,10 @@ import styles from './GamePageLayout.module.css';
 
 // Cabecera mínima compartida por todas las pantallas de juego:
 // enlace de regreso al hub + título + tema. El contenido del juego va como children.
-const GamePageLayout = ({ title, topic, children }) => {
+// "contentClassName" es opcional: cada juego puede pasar su propia clase para
+// darle un fondo/estilo particular al área de contenido (ej. la textura de
+// Lego), sin que este layout genérico sepa nada de eso.
+const GamePageLayout = ({ title, topic, children, contentClassName = '' }) => {
   return (
     <div className={styles.pageWrapper}>
       <header className={styles.header}>
@@ -19,7 +22,7 @@ const GamePageLayout = ({ title, topic, children }) => {
         </div>
       </header>
 
-      <main className={styles.content}>{children}</main>
+      <main className={`${styles.content} ${contentClassName}`}>{children}</main>
     </div>
   );
 };
