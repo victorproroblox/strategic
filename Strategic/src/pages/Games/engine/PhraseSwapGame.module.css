@@ -1,12 +1,32 @@
+/* Marco con textura de piezas de Lego (SVG propio, se repite en mosaico
+   sin perder nitidez a ningún tamaño porque es vectorial). El cuadro
+   blanco del juego "flota" encima, a modo de tarjeta. */
+.arena {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem;
+  border-radius: 28px;
+  overflow: hidden;
+  background-image: url('../../../assets/games/lego-pattern.svg');
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
 .stage {
   width: 100%;
   max-width: 720px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
+  background-color: #FFFFFF;
+  border-radius: 22px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
 }
 
 .sentenceBlock {
@@ -157,9 +177,16 @@
 }
 
 @media (max-width: 480px) {
+  .arena {
+    padding: 1rem;
+    border-radius: 20px;
+    background-size: 110px 110px;
+  }
+
   .stage {
     padding: 1.2rem 1rem;
     gap: 1.2rem;
+    border-radius: 16px;
   }
 
   .pieceInner {

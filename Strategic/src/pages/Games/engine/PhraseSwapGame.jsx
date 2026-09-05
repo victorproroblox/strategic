@@ -108,51 +108,53 @@ const PhraseSwapGame = ({ config }) => {
   };
 
   return (
-    <div className={styles.stage}>
-      <div className={styles.sentenceBlock}>
-        <span className={styles.langLabel}>English</span>
-        <p className={styles.sentence}>
-          {renderTemplate(plantilla.en, slots, bancos, indices, 'en')}
-        </p>
-      </div>
+    <div className={styles.arena}>
+      <div className={styles.stage}>
+        <div className={styles.sentenceBlock}>
+          <span className={styles.langLabel}>English</span>
+          <p className={styles.sentence}>
+            {renderTemplate(plantilla.en, slots, bancos, indices, 'en')}
+          </p>
+        </div>
 
-      <div className={styles.actions}>
-        <button type="button" className={styles.alternarBtn} onClick={handleAlternar}>
-          <SwapIcon className={styles.alternarIcon} />
-          Alternar
-        </button>
-
-        {!revealed && (
-          <button
-            type="button"
-            className={styles.revelarBtn}
-            onClick={() => setRevealed(true)}
-          >
-            <EyeIcon className={styles.revelarIcon} />
-            Revelar
+        <div className={styles.actions}>
+          <button type="button" className={styles.alternarBtn} onClick={handleAlternar}>
+            <SwapIcon className={styles.alternarIcon} />
+            Alternar
           </button>
-        )}
-      </div>
 
-      <AnimatePresence>
-        {revealed && (
-          <motion.div
-            className={styles.revealBlock}
-            initial={{ opacity: 0, y: -16, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -16, scale: 0.98 }}
-            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-          >
-            <div className={styles.divider} aria-hidden="true" />
-            <div className={styles.sentenceBlock}>
-              <span className={styles.langLabel}>Español</span>
-              <p className={styles.sentence}>
-                {renderTemplate(plantilla.es, slots, bancos, indices, 'es')}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {!revealed && (
+            <button
+              type="button"
+              className={styles.revelarBtn}
+              onClick={() => setRevealed(true)}
+            >
+              <EyeIcon className={styles.revelarIcon} />
+              Revelar
+            </button>
+          )}
+        </div>
+
+        <AnimatePresence>
+          {revealed && (
+            <motion.div
+              className={styles.revealBlock}
+              initial={{ opacity: 0, y: -16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -16, scale: 0.98 }}
+              transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+            >
+              <div className={styles.divider} aria-hidden="true" />
+              <div className={styles.sentenceBlock}>
+                <span className={styles.langLabel}>Español</span>
+                <p className={styles.sentence}>
+                  {renderTemplate(plantilla.es, slots, bancos, indices, 'es')}
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 };
